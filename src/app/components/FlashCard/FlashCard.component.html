@@ -1,0 +1,9 @@
+<section class="card">
+  <h2>{{ question }}</h2>
+
+  <button (click)="toggleAnswer()">
+    {{ showAnswer ? 'Hide answer' : 'Show answer' }}
+  </button>
+
+  <p *ngIf="showAnswer">{{ answer }}</p>
+</section>
