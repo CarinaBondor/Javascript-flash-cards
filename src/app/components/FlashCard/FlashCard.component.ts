@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
 
   templateUrl: './FlashCard.component.html',
-  styleUrls: ['./FlashCard.component.css'],
 })
 export class FlashCard {
   @Input() question = '';
