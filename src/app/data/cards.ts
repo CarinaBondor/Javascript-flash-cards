@@ -9,4 +9,9 @@ export const flashcardsData = [
     question: 'What is a component?',
     answer: 'A reusable UI building block.',
   },
+  {
+    id: 3,
+    question: 'What is a service?',
+    answer: 'A class that provides functionality to components.',
+  },
 ];
