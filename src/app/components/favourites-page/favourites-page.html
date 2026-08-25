@@ -1,1 +1,6 @@
-<p>favourites-page works!</p>
+<section class="card">
+  <h1>Favourited cards</h1>
+  <div *ngIf="favouritedCards.length === 0">
+    <p>You have no favourited cards.</p>
+  </div>
+</section>

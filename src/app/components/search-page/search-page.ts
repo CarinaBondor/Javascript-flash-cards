@@ -1,9 +1,17 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-search-page',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './search-page.html',
   styleUrl: './search-page.css',
 })
-export class SearchPage {}
+export class SearchPage {
+  searchQuery = '';
+
+  searchFlashcards() {
+    // TODO: implement search logic
+    console.log('Searching for:', this.searchQuery);
+  }
+}

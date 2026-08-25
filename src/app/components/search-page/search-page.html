@@ -1,1 +1,12 @@
-<p>search-page works!</p>
+<section class="card">
+  <h1>Search for Flashcards</h1>
+  <form (ngSubmit)="searchFlashcards()">
+    <input
+      type="text"
+      placeholder="Search flashcards..."
+      [(ngModel)]="searchQuery"
+      name="searchQuery"
+    />
+    <button type="submit">Search</button>
+  </form>
+</section>
