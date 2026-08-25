@@ -1,7 +1,7 @@
 <div class="flash-cards-holder">
   <button class="btn btn-navigation" (click)="previousCard()">Previous</button>
 
-  <flash-card [question]="currentCard.question" [answer]="currentCard.answer"> </flash-card>
+  <flash-card *ngIf="currentCard" [question]="currentCard.question" [answer]="currentCard.answer"></flash-card>
 
   <button class="btn btn-navigation" (click)="nextCard()">Next</button>
 </div>

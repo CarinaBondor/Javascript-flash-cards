@@ -11,11 +11,11 @@ import { flashcardsData } from '../../data/cards';
   styleUrls: ['./FlashCardsHolder.component.css'],
 })
 export class FlashCardsHolder {
-  cards = flashcardsData;
+  cards: typeof flashcardsData = flashcardsData;
 
   currentIndex = 0;
 
-  get currentCard() {
+  get currentCard(): typeof flashcardsData[number] | undefined {
     return this.cards[this.currentIndex];
   }
 
