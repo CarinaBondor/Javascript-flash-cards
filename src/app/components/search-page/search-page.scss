@@ -1,35 +1,22 @@
 @use 'styles/branding' as *;
 
-.card {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: $spacing-lg;
-  border: 1px solid $color-border;
-  border-radius: $border-radius;
+// .card {
+//   max-width: 600px;
+//   margin: 40px auto;
+//   padding: $spacing-lg;
+//   border: 1px solid $color-border;
+//   border-radius: $border-radius;
 
-  form {
-    display: flex;
-    gap: $spacing-sm;
-    margin-top: $spacing-md;
+//   form {
+//     display: flex;
+//     gap: $spacing-sm;
+//     margin-top: $spacing-md;
 
-    input {
-      flex: 1;
-      padding: $spacing-sm;
-      border: 1px solid $color-border;
-      border-radius: calc($border-radius / 2);
-    }
-
-    button {
-      padding: $spacing-sm $spacing-md;
-      background: $color-primary;
-      color: $color-background;
-      border: none;
-      border-radius: calc($border-radius / 2);
-      cursor: pointer;
-
-      &:hover {
-        background: $color-primary-hover;
-      }
-    }
-  }
-}
+//     input {
+//       flex: 1;
+//       padding: $spacing-sm;
+//       border: 1px solid $color-border;
+//       border-radius: calc($border-radius / 2);
+//     }
+//   }
+// }

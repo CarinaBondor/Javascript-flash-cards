@@ -1,39 +1,17 @@
 @use 'styles/branding' as *;
 
-// .flash-cards-holder {
-//   display: flex;
-//   flex-direction: row;
-//   gap: $spacing-md;
-//   padding: $spacing-md;
-//   max-width: 1000px;
-//   margin: 0 auto;
-//   align-items: center;
-//   justify-content: center;
-//   min-height: 50dvh;
-// }
+.flash-cards-holder {
+  display: flex;
+  flex-direction: row;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 50dvh;
+}
 
-// flash-card {
-//   flex: 1;
-//   min-width: 400px;
-// }
-
-// .btn-navigation {
-//   display: flex;
-//   gap: $spacing-sm;
-//   flex-direction: column;
-// }
-
-// button {
-//   padding: $spacing-sm $spacing-md;
-//   background: $color-primary;
-//   border: 1px solid $color-border;
-//   border-radius: $border-radius;
-//   font-size: $font-size-base;
-//   color: $color-background;
-//   cursor: pointer;
-//   transition: background-color 0.2s ease;
-
-//   &:hover {
-//     background: $color-primary-hover;
-//   }
-// }
+flash-card {
+  flex: 1;
+  min-width: 400px;
+}

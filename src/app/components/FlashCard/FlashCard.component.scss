@@ -8,3 +8,11 @@
 //   padding: $spacing-lg;
 //   text-align: center;
 // }
+
+.flash-card {
+  .mat-card-header {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+  }
+}

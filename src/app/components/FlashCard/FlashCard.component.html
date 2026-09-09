@@ -1,15 +1,15 @@
-<mat-card appearance="outlined">
+<mat-card appearance="outlined" class="flash-card">
   <mat-card-header>
     <mat-card-title>
       <h2>{{ question() }}</h2>
     </mat-card-title>
-    <mat-card-actions>
+    <mat-card-actions align="end">
       <favourite-button />
     </mat-card-actions>
   </mat-card-header>
 
   <mat-card-actions>
-    <button (click)="toggleAnswer()">
+    <button matFab extended (click)="toggleAnswer()">
       {{ showAnswer ? 'Hide answer' : 'Show answer' }}
     </button>
   </mat-card-actions>

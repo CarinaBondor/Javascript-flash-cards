@@ -1,12 +1,13 @@
-<section class="card">
+<mat-card appearance="outlined" class="card">
   <h1>Search for Flashcards</h1>
-  <form (ngSubmit)="searchFlashcards()">
+  <mat-form-field>
+    <mat-label>Search</mat-label>
     <input
+      matInput
       type="text"
       placeholder="Search flashcards..."
       [(ngModel)]="searchQuery"
       name="searchQuery"
     />
-    <button type="submit">Search</button>
-  </form>
-</section>
+  </mat-form-field>
+</mat-card>
