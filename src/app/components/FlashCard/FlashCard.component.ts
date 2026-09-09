@@ -1,11 +1,12 @@
 import { Component, effect, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FavouriteButton } from '../favouriteButton/favouriteButton';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'flash-card',
   standalone: true,
-  imports: [MatIconModule, FavouriteButton],
+  imports: [MatIconModule, FavouriteButton, MatCardModule],
   templateUrl: './FlashCard.component.html',
   styleUrl: './FlashCard.component.scss',
 })

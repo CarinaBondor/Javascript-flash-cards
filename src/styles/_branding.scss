@@ -1,6 +1,23 @@
 @use 'sass:map';
 
 // =============================================================================
+// Theme & Branding Tokens
+// =============================================================================
+$color-primary: #007bff;
+$color-primary-hover: #0056b3;
+$color-text: #333333;
+$color-background: #ffffff;
+$color-border: #dddddd;
+
+$border-radius: 12px;
+
+$spacing-sm: 10px;
+$spacing-md: 20px;
+$spacing-lg: 40px;
+
+$font-size-base: 1rem;
+
+// =============================================================================
 // Responsive Breakpoints
 // =============================================================================
 $breakpoint-xs: 480px;
@@ -84,25 +101,8 @@ $container-padding-desktop: 2rem;
 }
 
 // =============================================================================
-// CSS Custom Properties & Global Layout Utilities
+// Utility classes for template use
 // =============================================================================
-:root {
-  --site-max-width: #{$site-max-width};
-  --site-content-width: #{$site-content-width};
-  --site-narrow-width: #{$site-narrow-width};
-
-  --container-padding: #{$container-padding-mobile};
-
-  @include respond-to('md') {
-    --container-padding: #{$container-padding-tablet};
-  }
-
-  @include respond-to('lg') {
-    --container-padding: #{$container-padding-desktop};
-  }
-}
-
-// Utility classes for easy template use
 .site-container {
   @include site-container();
 }

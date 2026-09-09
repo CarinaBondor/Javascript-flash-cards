@@ -1,37 +1,39 @@
-.flash-cards-holder {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  padding: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center;
-  min-height: 50dvh;
-}
+@use 'styles/branding' as *;
 
-flash-card {
-  flex: 1;
-  min-width: 400px;
-}
+// .flash-cards-holder {
+//   display: flex;
+//   flex-direction: row;
+//   gap: $spacing-md;
+//   padding: $spacing-md;
+//   max-width: 1000px;
+//   margin: 0 auto;
+//   align-items: center;
+//   justify-content: center;
+//   min-height: 50dvh;
+// }
 
-.btn-navigation {
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-}
+// flash-card {
+//   flex: 1;
+//   min-width: 400px;
+// }
 
-button {
-  padding: var(--spacing-sm) var(--spacing-md);
-  background: var(--color-primary);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
-  font-size: var(--font-size-base);
-  color: var(--color-background);
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+// .btn-navigation {
+//   display: flex;
+//   gap: $spacing-sm;
+//   flex-direction: column;
+// }
 
-  &:hover {
-    background: var(--color-primary-hover);
-  }
-}
+// button {
+//   padding: $spacing-sm $spacing-md;
+//   background: $color-primary;
+//   border: 1px solid $color-border;
+//   border-radius: $border-radius;
+//   font-size: $font-size-base;
+//   color: $color-background;
+//   cursor: pointer;
+//   transition: background-color 0.2s ease;
+
+//   &:hover {
+//     background: $color-primary-hover;
+//   }
+// }

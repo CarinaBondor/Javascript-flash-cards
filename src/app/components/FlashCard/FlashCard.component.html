@@ -1,13 +1,22 @@
-<section class="card">
-  <h2>{{ question() }}</h2>
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>{{ question() }}</h2>
+    </mat-card-title>
+    <mat-card-actions>
+      <favourite-button />
+    </mat-card-actions>
+  </mat-card-header>
 
-  <button (click)="toggleAnswer()">
-    {{ showAnswer ? 'Hide answer' : 'Show answer' }}
-  </button>
+  <mat-card-actions>
+    <button (click)="toggleAnswer()">
+      {{ showAnswer ? 'Hide answer' : 'Show answer' }}
+    </button>
+  </mat-card-actions>
 
   @if (showAnswer) {
-    <p>{{ answer() }}</p>
+    <mat-card-content>
+      <p>{{ answer() }}</p>
+    </mat-card-content>
   }
-
-  <favourite-button />
-</section>
+</mat-card>

@@ -1,5 +1,7 @@
+@use 'styles/branding' as *;
+
 footer {
   margin-top: auto;
-  padding: var(--spacing-md);
+  padding: $spacing-md;
   text-align: center;
 }

@@ -1,8 +1,10 @@
-.card {
-  width: 400px;
-  margin: 40px auto;
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
-  padding: 24px;
-  text-align: center;
-}
+@use 'styles/branding' as *;
+
+// .card {
+//   width: 400px;
+//   margin: 40px auto;
+//   border: 1px solid $color-border;
+//   border-radius: $border-radius;
+//   padding: $spacing-lg;
+//   text-align: center;
+// }

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FlashCard } from '../FlashCard/FlashCard.component';
 import { flashcardsData } from '../../data/cards';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'flash-cards-holder',
-  imports: [FlashCard],
+  imports: [FlashCard, MatButtonModule, MatIconModule],
   templateUrl: './FlashCardsHolder.component.html',
   styleUrl: './FlashCardsHolder.component.scss',
 })
