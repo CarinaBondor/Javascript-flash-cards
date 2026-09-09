@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-about-page',
   imports: [],
   templateUrl: './AboutPage.html',
-  styleUrl: './AboutPage.css',
+  styleUrl: './AboutPage.scss',
 })
 export class AboutPage {}

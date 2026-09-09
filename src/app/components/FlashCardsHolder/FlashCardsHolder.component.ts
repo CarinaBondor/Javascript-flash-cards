@@ -5,16 +5,15 @@ import { flashcardsData } from '../../data/cards';
 @Component({
   selector: 'flash-cards-holder',
   imports: [FlashCard],
-
   templateUrl: './FlashCardsHolder.component.html',
-  styleUrl: './FlashCardsHolder.component.css',
+  styleUrl: './FlashCardsHolder.component.scss',
 })
 export class FlashCardsHolder {
   cards: typeof flashcardsData = flashcardsData;
 
   currentIndex = 0;
 
-  get currentCard(): typeof flashcardsData[number] | undefined {
+  get currentCard(): (typeof flashcardsData)[number] | undefined {
     return this.cards[this.currentIndex];
   }
 

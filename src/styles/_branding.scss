@@ -1,0 +1,116 @@
+@use 'sass:map';
+
+// =============================================================================
+// Responsive Breakpoints
+// =============================================================================
+$breakpoint-xs: 480px;
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1440px;
+
+$breakpoints: (
+  'xs': $breakpoint-xs,
+  'sm': $breakpoint-sm,
+  'md': $breakpoint-md,
+  'lg': $breakpoint-lg,
+  'xl': $breakpoint-xl,
+  '2xl': $breakpoint-2xl,
+);
+
+// =============================================================================
+// Site Layout Dimensions
+// =============================================================================
+$site-max-width: 1200px;
+$site-content-width: 860px;
+$site-narrow-width: 540px;
+
+$container-padding-mobile: 1rem;
+$container-padding-tablet: 1.5rem;
+$container-padding-desktop: 2rem;
+
+// =============================================================================
+// Responsive Mixins
+// =============================================================================
+
+/// Mobile-first breakpoint mixin: min-width
+/// Usage: @include respond-to('md') { ... }
+@mixin respond-to($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+/// Max-width breakpoint mixin: max-width
+/// Usage: @include respond-below('md') { ... }
+@mixin respond-below($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (max-width: (map.get($breakpoints, $breakpoint) - 1px)) {
+      @content;
+    }
+  } @else {
+    @media (max-width: ($breakpoint - 1px)) {
+      @content;
+    }
+  }
+}
+
+/// Site container mixin to center and constrain layout with responsive padding
+/// Usage: @include site-container; or @include site-container(800px);
+@mixin site-container($max-width: $site-max-width) {
+  width: 100%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $container-padding-mobile;
+  padding-right: $container-padding-mobile;
+
+  @include respond-to('md') {
+    padding-left: $container-padding-tablet;
+    padding-right: $container-padding-tablet;
+  }
+
+  @include respond-to('lg') {
+    padding-left: $container-padding-desktop;
+    padding-right: $container-padding-desktop;
+  }
+}
+
+// =============================================================================
+// CSS Custom Properties & Global Layout Utilities
+// =============================================================================
+:root {
+  --site-max-width: #{$site-max-width};
+  --site-content-width: #{$site-content-width};
+  --site-narrow-width: #{$site-narrow-width};
+
+  --container-padding: #{$container-padding-mobile};
+
+  @include respond-to('md') {
+    --container-padding: #{$container-padding-tablet};
+  }
+
+  @include respond-to('lg') {
+    --container-padding: #{$container-padding-desktop};
+  }
+}
+
+// Utility classes for easy template use
+.site-container {
+  @include site-container();
+}
+
+.site-container-content {
+  @include site-container($site-content-width);
+}
+
+.site-container-narrow {
+  @include site-container($site-narrow-width);
+}

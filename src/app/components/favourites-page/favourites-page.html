@@ -4,5 +4,7 @@
     <div>
       <p>You have no favourited cards.</p>
     </div>
+  } @else {
+    <p>Total favourites: {{ favouritesService.favouriteCount() }}</p>
   }
 </section>

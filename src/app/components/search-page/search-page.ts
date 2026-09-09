@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-search-page',
   imports: [FormsModule],
   templateUrl: './search-page.html',
-  styleUrl: './search-page.css',
+  styleUrl: './search-page.scss',
 })
 export class SearchPage {
   searchQuery = '';
