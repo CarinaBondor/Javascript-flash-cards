@@ -1,22 +1,24 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, effect, input } from '@angular/core';
 
 @Component({
   selector: 'flash-card',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './FlashCard.component.html',
-  styleUrl: './FlashCard.component.css', // Adds the stylesheet reference
+  styleUrl: './FlashCard.component.css',
 })
-export class FlashCard implements OnChanges {
-  @Input() question = '';
-  @Input() answer = '';
+export class FlashCard {
+  question = input('');
+  answer = input('');
   showAnswer = false;
 
-  // This hook triggers automatically whenever any @Input() properties change
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['question'] || changes['answer']) {
+  constructor() {
+    effect(() => {
+      // Reading question() and answer() registers them as dependencies.
+      // Whenever either changes, showAnswer resets to false.
+      this.question();
+      this.answer();
       this.showAnswer = false;
-    }
+    });
   }
 
   toggleAnswer() {
