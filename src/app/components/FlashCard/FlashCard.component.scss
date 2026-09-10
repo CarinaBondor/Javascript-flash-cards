@@ -18,8 +18,30 @@
   }
 
   mat-card-content {
-    padding-top: $spacing-lg;
     text-align: center;
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    transition:
+      grid-template-rows 0.3s ease,
+      opacity 0.3s ease,
+      padding 0.3s ease;
+    overflow: hidden;
+
+    &.expanded {
+      grid-template-rows: 1fr;
+      opacity: 1;
+      padding-top: $spacing-lg !important;
+      padding-bottom: $spacing-md !important;
+    }
+
+    p {
+      min-height: 0;
+      overflow: hidden;
+      margin: 0;
+    }
   }
 
   favourite-button {

@@ -3,12 +3,17 @@
     <mat-card-title>Favourited cards</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    @if (favouritedCards.length === 0) {
+    @if (favouritedCards().length === 0) {
       <div>
         <p>You have no favourited cards.</p>
       </div>
     } @else {
-      <p>Total favourites: {{ favouritesService.favouriteCount() }}</p>
+      <p>Total favourites: {{ favouritedCards().length }}</p>
+      <div class="favourited-cards">
+        @for (card of favouritedCards(); track card.id) {
+          <flash-card [cardId]="card.id" [question]="card.question" [answer]="card.answer" />
+        }
+      </div>
     }
   </mat-card-content>
 </mat-card>

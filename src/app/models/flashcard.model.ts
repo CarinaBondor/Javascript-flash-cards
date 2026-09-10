@@ -3,4 +3,5 @@ export interface Flashcard {
   question: string;
   answer: string;
   category?: string;
+  editorial?: string;
 }

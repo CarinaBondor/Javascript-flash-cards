@@ -1,5 +1,10 @@
-<button matIconButton type="button" (click)="isFavourite = !isFavourite">
-  @if (isFavourite) {
+<button
+  matIconButton
+  type="button"
+  [attr.aria-label]="isFavourite() ? 'Remove from favourites' : 'Add to favourites'"
+  (click)="toggleFavourite()"
+>
+  @if (isFavourite()) {
     <mat-icon aria-label="Favourite" fontIcon="favorite" />
   } @else {
     <mat-icon aria-label="Not favourite" fontIcon="favorite_border" />

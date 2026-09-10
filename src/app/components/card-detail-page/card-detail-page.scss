@@ -1,0 +1,78 @@
+@use 'styles/branding' as *;
+
+.card-detail-page {
+  width: 100%;
+  max-width: $site-content-width;
+  margin: 0 auto;
+  padding: $spacing-md 0;
+}
+
+.back-link {
+  margin-bottom: $spacing-md;
+}
+
+.article-card {
+  padding: $spacing-md;
+}
+
+.article-card mat-card-header {
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $spacing-md;
+}
+
+.article-heading {
+  min-width: 0;
+}
+
+.category,
+.article-label {
+  display: block;
+  color: var(--mat-sys-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.category {
+  margin-bottom: $spacing-sm;
+}
+
+.article-card mat-card-content {
+  padding-top: $spacing-lg;
+}
+
+.article-answer {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin: $spacing-sm 0 0;
+}
+
+.editorial-content {
+  border-top: 1px solid var(--mat-sys-outline-variant);
+  margin-top: $spacing-md;
+}
+
+.article-editorial {
+  line-height: 1.7;
+  margin: $spacing-sm 0 0;
+}
+
+@media (max-width: $breakpoint-sm) {
+  .card-detail-page {
+    padding: $spacing-sm 0;
+  }
+
+  .article-card {
+    padding: $spacing-sm;
+  }
+
+  .article-card mat-card-header {
+    gap: $spacing-sm;
+  }
+
+  .article-answer {
+    font-size: 1rem;
+  }
+}

@@ -30,4 +30,11 @@
     flex-wrap: wrap;
     gap: $spacing-sm;
   }
+
+  .link {
+    mat-chip {
+      pointer-events: auto;
+      cursor: pointer !important;
+    }
+  }
 }

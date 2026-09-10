@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { FavouritesService } from '../../services/favourites.service';
 
 @Component({
   selector: 'favourite-button',
@@ -9,5 +10,11 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './favouriteButton.html',
 })
 export class FavouriteButton {
-  isFavourite = false;
+  readonly cardId = input.required<number>();
+  private readonly favouritesService = inject(FavouritesService);
+  readonly isFavourite = computed(() => this.favouritesService.isFavourited(this.cardId()));
+
+  toggleFavourite(): void {
+    this.favouritesService.toggleFavourite(this.cardId());
+  }
 }

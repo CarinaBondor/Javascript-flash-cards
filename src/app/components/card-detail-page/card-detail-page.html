@@ -1,0 +1,42 @@
+@if (card(); as currentCard) {
+  <article class="card-detail-page">
+    <a mat-button routerLink="/" class="back-link">
+      <mat-icon>arrow_back</mat-icon>
+      Back to flash cards
+    </a>
+
+    <mat-card appearance="outlined" class="article-card">
+      <mat-card-header>
+        <div class="article-heading">
+          <span class="category">{{ currentCard.category }}</span>
+          <mat-card-title>{{ currentCard.question }}</mat-card-title>
+        </div>
+        <favourite-button [cardId]="currentCard.id" />
+      </mat-card-header>
+
+      <mat-card-content>
+        <p class="article-label">Answer</p>
+        <p class="article-answer">{{ currentCard.answer }}</p>
+      </mat-card-content>
+
+      @if (currentCard.editorial) {
+        <mat-card-content class="editorial-content">
+          <p class="article-label">Editorial</p>
+          <p class="article-editorial">{{ currentCard.editorial }}</p>
+        </mat-card-content>
+      }
+    </mat-card>
+  </article>
+} @else {
+  <article class="card-detail-page">
+    <mat-card appearance="outlined" class="article-card">
+      <mat-card-header>
+        <mat-card-title>Card not found</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>That flash card does not exist.</p>
+        <a mat-button routerLink="/">Return to flash cards</a>
+      </mat-card-content>
+    </mat-card>
+  </article>
+}
