@@ -1,7 +1,9 @@
 @use 'styles/branding' as *;
 
 footer {
-  margin-top: auto;
+  justify-content: center;
+  display: flex;
+  align-items: center;
   padding: $spacing-md;
-  text-align: center;
+  background-color: $color-background;
 }

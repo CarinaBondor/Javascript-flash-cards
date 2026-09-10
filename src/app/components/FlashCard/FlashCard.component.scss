@@ -27,4 +27,11 @@
     top: $spacing-sm;
     right: $spacing-sm;
   }
+
+  mat-card-header {
+    padding: $spacing-lg;
+  }
+  mat-card-title {
+    text-align: center;
+  }
 }

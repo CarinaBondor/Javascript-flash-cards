@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FlashCard } from '../FlashCard/FlashCard.component';
 import { flashcardsData } from '../../data/cards';
+import { Flashcard } from '../../models/flashcard.model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -11,11 +12,11 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './FlashCardsHolder.component.scss',
 })
 export class FlashCardsHolder {
-  cards: typeof flashcardsData = flashcardsData;
+  cards: Flashcard[] = flashcardsData;
 
   currentIndex = 0;
 
-  get currentCard(): (typeof flashcardsData)[number] | undefined {
+  get currentCard(): Flashcard | undefined {
     return this.cards[this.currentIndex];
   }
 

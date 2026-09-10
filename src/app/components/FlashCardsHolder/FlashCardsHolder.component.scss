@@ -8,10 +8,27 @@
   margin: 0 auto;
   align-items: center;
   justify-content: center;
-  min-height: 50dvh;
+  min-height: 40dvh;
+
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+  }
 }
 
 flash-card {
   flex: 1;
-  min-width: 400px;
+}
+
+.mobile-navigation {
+  display: none;
+}
+
+@media (max-width: $breakpoint-sm) {
+  .desktop-navigation {
+    display: none;
+  }
+
+  .mobile-navigation {
+    display: inline-flex;
+  }
 }

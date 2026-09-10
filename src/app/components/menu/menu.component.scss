@@ -1,21 +1,80 @@
 @use 'styles/branding' as *;
 
 .wrapper {
-  ul {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: $color-background;
+
+  .desktop-toolbar {
+    background: $color-background;
     display: flex;
-    gap: $spacing-md;
+    justify-content: center;
     align-items: center;
 
-    li a {
-      text-decoration: none;
+    @media (max-width: $breakpoint-sm) {
+      display: none;
+    }
 
-      &:hover {
-        text-decoration: underline;
-      }
+    ul {
+      display: flex;
+      gap: $spacing-md;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    a.active {
+      font-weight: bold;
+    }
+  }
+}
+
+.mobile-navigation,
+.mobile-toolbar {
+  display: none;
+
+  .sidenav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: $spacing-sm;
+
+    a {
+      justify-content: flex-start;
 
       &.active {
         font-weight: bold;
       }
+    }
+  }
+
+  .mobile-sidenav {
+    width: 260px;
+    padding: $spacing-sm;
+  }
+
+  .mobile-toolbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .mobile-navigation {
+    display: block;
+
+    &.sidenav-open {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      height: 100dvh;
     }
   }
 }

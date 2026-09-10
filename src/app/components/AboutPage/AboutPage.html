@@ -1,46 +1,72 @@
-<div>
-  <mat-card appearance="outlined">
+<div class="about-container">
+  <mat-card appearance="outlined" class="about-card">
     <mat-card-header>
       <mat-card-title>About This App</mat-card-title>
+      <mat-card-subtitle>JavaScript & Angular Flash Card Study Tool</mat-card-subtitle>
     </mat-card-header>
+
     <mat-card-content>
-      <p>
-        This app is a simple flash card application built with Angular. It allows users to view and
-        manage flash cards for studying purposes.
-      </p>
+      <p class="lead-text">Created as a learning project for mastering Angular concepts.</p>
 
-      <mat-card-header>
-        <mat-card-title>Features include:</mat-card-title>
-      </mat-card-header>
-      <mat-list role="list">
-        <mat-list-item role="listitem">View and study flash cards</mat-list-item>
-        <mat-list-item role="listitem"
-          >Favourite questions based on user interactions</mat-list-item
-        >
-      </mat-list>
+      <mat-divider />
 
-      <mat-card-header>
-        <mat-card-title>Plans for the future of this project</mat-card-title>
-      </mat-card-header>
+      <section class="about-section">
+        <h3>Features</h3>
+        <mat-list>
+          <mat-list-item>
+            <mat-icon matListItemIcon>check_circle</mat-icon>
+            <div matListItemTitle>View and study interactive flash cards</div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListItemIcon>favorite</mat-icon>
+            <div matListItemTitle>Favourite cards for quick access</div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListItemIcon>search</mat-icon>
+            <div matListItemTitle>Search cards by question or answer content</div>
+          </mat-list-item>
+        </mat-list>
+      </section>
 
-      <mat-list role="list">
-        <mat-list-item role="listitem"
-          >Search flash cards based on flash card content</mat-list-item
-        >
-        <mat-list-item role="listitem">Add functionality to create flash cards</mat-list-item>
-        <mat-list-item role="listitem">Add multiple topics for the flashcards</mat-list-item>
-        <mat-list-item role="listitem">Add quizzes</mat-list-item>
-      </mat-list>
+      <mat-divider />
 
-      <mat-card-header>
-        <mat-card-title>Technologies Used:</mat-card-title>
-      </mat-card-header>
+      <section class="about-section">
+        <h3>Future Roadmap</h3>
+        <mat-list>
+          <mat-list-item>
+            <mat-icon matListItemIcon>add_circle_outline</mat-icon>
+            <div matListItemTitle>Create and edit custom flash cards</div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListItemIcon>category</mat-icon>
+            <div matListItemTitle>Multiple study topics and categories</div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListItemIcon>quiz</mat-icon>
+            <div matListItemTitle>Interactive quizzes and progress tracking</div>
+          </mat-list-item>
+        </mat-list>
+      </section>
 
-      <mat-list role="list">
-        <mat-list-item role="listitem">Angular</mat-list-item>
-        <mat-list-item role="listitem">TypeScript</mat-list-item>
-        <mat-list-item role="listitem">Angular Material</mat-list-item>
-      </mat-list>
+      <mat-divider />
+
+      <section class="about-section">
+        <h3>Technologies Used</h3>
+        <mat-chip-set class="tech-chips">
+          <mat-chip>Angular 19+</mat-chip>
+          <mat-chip>TypeScript</mat-chip>
+          <mat-chip>Angular Material</mat-chip>
+          <mat-chip>RxJS & Signals</mat-chip>
+          <mat-chip>SCSS</mat-chip>
+        </mat-chip-set>
+      </section>
+
+      <mat-divider />
+
+      <section class="about-section">
+        <h3>Check out the code on Github</h3>
+        <mat-chip>Here</mat-chip>
+      </section>
     </mat-card-content>
   </mat-card>
 </div>

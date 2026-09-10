@@ -1,15 +1,33 @@
 <div class="flash-cards-holder">
-  <button matFab extended class="btn btn-navigation" (click)="previousCard()">
+  <button matFab extended class="btn btn-navigation desktop-navigation" (click)="previousCard()">
     <mat-icon>chevron_left</mat-icon>
     Previous
+  </button>
+
+  <button
+    matFab
+    class="btn btn-navigation mobile-navigation"
+    aria-label="Previous card"
+    (click)="previousCard()"
+  >
+    <mat-icon>chevron_left</mat-icon>
   </button>
 
   @if (currentCard) {
     <flash-card [question]="currentCard.question" [answer]="currentCard.answer" />
   }
 
-  <button matFab extended class="btn btn-navigation" (click)="nextCard()">
+  <button matFab extended class="btn btn-navigation desktop-navigation" (click)="nextCard()">
     <mat-icon>chevron_right</mat-icon>
     Next
+  </button>
+
+  <button
+    matFab
+    class="btn btn-navigation mobile-navigation"
+    aria-label="Next card"
+    (click)="nextCard()"
+  >
+    <mat-icon>chevron_right</mat-icon>
   </button>
 </div>

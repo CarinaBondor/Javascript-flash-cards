@@ -1,2 +1,51 @@
+@use '@angular/material' as mat;
 @use 'styles/reset';
 @use 'styles/branding' as *;
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$violet-palette,
+        tertiary: mat.$orange-palette,
+      ),
+      typography: Montserrat,
+      density: 2,
+    )
+  );
+  @include mat.card-overrides(
+    (
+      title-text-weight: 700,
+    )
+  );
+}
+
+body {
+  color-scheme: light;
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+  margin: 0;
+  height: 100%;
+}
+
+mat-card-content,
+.mat-mdc-card-content {
+  padding-top: $spacing-md !important;
+
+  mat-card-title,
+  .mat-mdc-card-title {
+    margin-top: $spacing-md;
+    margin-bottom: $spacing-sm;
+    display: block;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .mat-mdc-card-title,
+  mat-card-title {
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+}
