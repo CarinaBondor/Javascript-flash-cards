@@ -1,9 +1,1 @@
 @use 'styles/branding' as *;
-
-.card {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: $spacing-lg;
-  border: 1px solid $color-border;
-  border-radius: $border-radius;
-}

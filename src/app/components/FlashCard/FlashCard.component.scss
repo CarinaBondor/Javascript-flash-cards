@@ -10,9 +10,21 @@
 // }
 
 .flash-card {
-  .mat-card-header {
+  mat-card-header,
+  mat-card-actions {
     display: flex;
-    justify-items: center;
+    justify-content: center;
     align-items: center;
+  }
+
+  mat-card-content {
+    padding-top: $spacing-lg;
+    text-align: center;
+  }
+
+  favourite-button {
+    position: absolute;
+    top: $spacing-sm;
+    right: $spacing-sm;
   }
 }
