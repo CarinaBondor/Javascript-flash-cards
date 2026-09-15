@@ -8,6 +8,10 @@
   z-index: 1000;
   background: $color-background;
 
+  .mat-drawer-container {
+    background: transparent;
+  }
+
   .desktop-toolbar {
     background: $color-background;
     display: flex;

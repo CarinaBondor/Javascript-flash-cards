@@ -23,7 +23,12 @@
 
     @if (results.length) {
       @for (card of results; track card.id) {
-        <flash-card [cardId]="card.id" [question]="card.question" [answer]="card.answer" />
+        <flash-card
+          [cardId]="card.id"
+          [question]="card.question"
+          [answer]="card.answer"
+          class="skinny"
+        />
       }
     } @else {
       <p>No flash cards match “{{ searchQuery }}”.</p>

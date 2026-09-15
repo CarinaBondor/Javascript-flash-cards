@@ -1,6 +1,11 @@
 @use 'styles/branding' as *;
 
 .flash-card {
+  mat-card-header {
+    justify-content: center;
+    display: flex;
+  }
+
   mat-card-header,
   mat-card-actions {
     display: flex;
@@ -44,7 +49,28 @@
   mat-card-header {
     padding: $spacing-lg;
   }
+
   mat-card-title {
     text-align: center;
+  }
+
+  mat-card-actions {
+    gap: 1rem;
+  }
+}
+
+:host(.skinny) .flash-card {
+  padding: $spacing-sm;
+
+  mat-card-header,
+  mat-card-actions {
+    justify-content: flex-start;
+    display: flex;
+    padding: $spacing-sm;
+  }
+
+  mat-card-content {
+    justify-content: flex-start;
+    padding-top: $spacing-sm;
   }
 }

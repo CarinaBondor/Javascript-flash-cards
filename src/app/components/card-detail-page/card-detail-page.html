@@ -1,8 +1,7 @@
 @if (card(); as currentCard) {
   <article class="card-detail-page">
-    <a mat-button routerLink="/" class="back-link">
-      <mat-icon>arrow_back</mat-icon>
-      Back to flash cards
+    <a matButton="tonal" routerLink="/" class="back-link">
+      <mat-icon>arrow_back</mat-icon> Back to flash cards
     </a>
 
     <mat-card appearance="outlined" class="article-card">
@@ -32,12 +31,15 @@
 } @else {
   <article class="card-detail-page">
     <mat-card appearance="outlined" class="article-card">
-      <mat-card-header>
-        <mat-card-title>Card not found</mat-card-title>
+      <mat-card-header class="article-heading">
+        <mat-card-title>Sorry, your flash card was not found</mat-card-title>
       </mat-card-header>
-      <mat-card-content>
-        <p>That flash card does not exist.</p>
-        <a mat-button routerLink="/">Return to flash cards</a>
+      <mat-card-content class="editorial-content">
+        <p class="article-editorial">That flash card does not exist.</p>
+        <a matButton="tonal" routerLink="/">
+          <mat-icon>arrow_back</mat-icon>
+          Return to flash cards
+        </a>
       </mat-card-content>
     </mat-card>
   </article>
