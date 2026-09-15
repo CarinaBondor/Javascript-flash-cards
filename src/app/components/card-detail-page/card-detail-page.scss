@@ -1,12 +1,5 @@
 @use 'styles/branding' as *;
 
-.card-detail-page {
-  width: 100%;
-  max-width: $site-content-width;
-  margin: 0 auto;
-  padding: $spacing-md 0;
-}
-
 .back-link {
   margin-bottom: $spacing-md;
 }
@@ -17,8 +10,8 @@
 
 .article-card mat-card-header {
   align-items: flex-start;
-  justify-content: space-between;
-  gap: $spacing-md;
+  justify-content: flex-start;
+  text-align: left;
 }
 
 .article-heading {
@@ -59,20 +52,26 @@
   margin: $spacing-sm 0 0;
 }
 
-@media (max-width: $breakpoint-sm) {
-  .card-detail-page {
-    padding: $spacing-sm 0;
-  }
+// @media (max-width: $breakpoint-sm) {
+//   .card-detail-page {
+//     padding: $spacing-sm 0;
+//   }
 
-  .article-card {
-    padding: $spacing-sm;
-  }
+//   .article-card {
+//     padding: $spacing-sm;
+//   }
 
-  .article-card mat-card-header {
-    gap: $spacing-sm;
-  }
+//   .article-card mat-card-header {
+//     gap: $spacing-sm;
+//   }
 
-  .article-answer {
-    font-size: 1rem;
-  }
+//   .article-answer {
+//     font-size: 1rem;
+//   }
+// }
+
+favourite-button {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
 }

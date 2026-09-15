@@ -7,7 +7,7 @@ export const flashcardsData: Flashcard[] = [
     answer: 'A component-based framework for building scalable web applications.',
     category: 'angular',
     editorial:
-      'Angular is a popular framework maintained by Google for building dynamic web applications.',
+      'Angular is a TypeScript-based, open-source web application framework developed and maintained by Google. It is a complete development platform designed for building large-scale, high-performance Single-Page Applications (SPAs). Unlike React or Vue (which are technically lightweight libraries focused primarily on rendering the user interface), Angular is a "batteries-included" framework. This means it provides everything a developer needs to build an enterprise web application right out of the box, without forcing them to hunt for third-party tools.',
   },
   {
     id: 2,

@@ -9,7 +9,9 @@
       <mat-card-header>
         <div class="article-heading">
           <span class="category">{{ currentCard.category }}</span>
-          <mat-card-title>{{ currentCard.question }}</mat-card-title>
+          <mat-card-title>
+            <h1>{{ currentCard.question }}</h1></mat-card-title
+          >
         </div>
         <favourite-button [cardId]="currentCard.id" />
       </mat-card-header>

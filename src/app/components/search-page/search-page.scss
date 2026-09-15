@@ -1,22 +1,23 @@
 @use 'styles/branding' as *;
 
-// .card {
-//   max-width: 600px;
-//   margin: 40px auto;
-//   padding: $spacing-lg;
-//   border: 1px solid $color-border;
-//   border-radius: $border-radius;
+.search-card {
+  margin: 0 auto;
 
-//   form {
-//     display: flex;
-//     gap: $spacing-sm;
-//     margin-top: $spacing-md;
+  mat-card-content {
+    padding-top: $spacing-md;
+  }
 
-//     input {
-//       flex: 1;
-//       padding: $spacing-sm;
-//       border: 1px solid $color-border;
-//       border-radius: calc($border-radius / 2);
-//     }
-//   }
-// }
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.search-results {
+  display: grid;
+  gap: $spacing-md;
+  margin-top: $spacing-lg;
+
+  > p {
+    margin: 0;
+  }
+}

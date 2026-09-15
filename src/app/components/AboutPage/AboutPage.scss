@@ -2,26 +2,9 @@
 
 .about-card {
   width: 100%;
-  padding: $spacing-sm;
-
-  mat-card-header {
-    margin-bottom: $spacing-sm;
-  }
-
-  .lead-text {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    margin: $spacing-sm 0 $spacing-md 0;
-  }
 
   mat-divider {
-    margin: $spacing-md 0;
-  }
-
-  .about-section {
-    h3 {
-      margin-bottom: $spacing-sm;
-    }
+    margin: $spacing-sm 0;
   }
 
   .tech-chips {
