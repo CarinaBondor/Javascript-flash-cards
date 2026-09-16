@@ -8,6 +8,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'Angular is a TypeScript-based, open-source web application framework developed and maintained by Google. It is a complete development platform designed for building large-scale, high-performance Single-Page Applications (SPAs). Unlike React or Vue (which are technically lightweight libraries focused primarily on rendering the user interface), Angular is a "batteries-included" framework. This means it provides everything a developer needs to build an enterprise web application right out of the box, without forcing them to hunt for third-party tools.',
+    level: 'beginner',
   },
   {
     id: 2,
@@ -16,7 +17,8 @@ export const flashcardsData: Flashcard[] = [
       'A reusable UI building block combining a TypeScript class, HTML template, and CSS styles.',
     category: 'angular',
     editorial:
-      'Components are the main building blocks of Angular applications. Each component controls a section of the page and combines its data, behavior, markup, and styling.',
+      "Components are the main building blocks of Angular applications. Each component controls a section of the page and combines its data, behavior, markup, and styling. An Angular Component is the primary building block of an Angular application's user interface. It controls a portion of the screen (a view) and consists of three main elements: a TypeScript class (logic), an HTML template (structure), and CSS styles (appearance). In modern Angular, components are typically defined using Standalone Components, which do not require NgModule wrappers.",
+    level: 'beginner',
   },
   {
     id: 3,
@@ -26,6 +28,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'Services keep shared logic outside components. Angular can create and provide a service through dependency injection, making the same logic reusable across different parts of the application.',
+    level: 'beginner',
   },
   {
     id: 4,
@@ -35,6 +38,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'Signals provide a simple way to represent reactive state. When a signal changes, Angular knows which parts of the application depend on it and can update them efficiently.',
+    level: 'beginner',
   },
   {
     id: 5,
@@ -44,6 +48,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'computed() is useful for values that can be calculated from existing state. It caches the result and recalculates it when one of the signals it reads changes.',
+    level: 'beginner',
   },
   {
     id: 6,
@@ -52,6 +57,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'effect() is intended for side effects such as logging, synchronizing with browser APIs, or saving state. It should not usually be used to calculate values that could be handled by computed().',
+    level: 'beginner',
   },
   {
     id: 7,
@@ -61,6 +67,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'Dependency injection reduces coupling between classes. Instead of constructing a dependency manually, a component asks Angular for it and Angular supplies the configured instance.',
+    level: 'beginner',
   },
   {
     id: 8,
@@ -70,6 +77,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'Standalone components make dependencies visible where they are used. They simplify application structure by allowing components, directives, pipes, and modules to be imported directly.',
+    level: 'beginner',
   },
   {
     id: 9,
@@ -79,6 +87,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'Built-in control flow keeps common template logic readable and removes the need for structural directive microsyntax in many cases. It also provides clearer blocks for conditions and loops.',
+    level: 'beginner',
   },
   {
     id: 10,
@@ -88,6 +97,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'Pipes transform values for display without changing the original data. Angular includes common pipes, and applications can define custom pipes for domain-specific formatting.',
+    level: 'beginner',
   },
   {
     id: 11,
@@ -97,6 +107,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'The input() function creates a signal that receives a value from a parent component. Reading the input with inputName() makes the value reactive inside the child.',
+    level: 'beginner',
   },
   {
     id: 12,
@@ -106,6 +117,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'The output() function lets a child component notify its parent about an event. The parent listens in the template and decides what action to take when the event occurs.',
+    level: 'beginner',
   },
   {
     id: 13,
@@ -115,6 +127,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'ng-content enables a reusable component to accept content from its parent. The child defines the insertion point, while the parent supplies the projected markup.',
+    level: 'beginner',
   },
   {
     id: 14,
@@ -124,6 +137,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'Route guards run during navigation and can allow, cancel, or redirect a transition. They are commonly used for authentication, unsaved changes, or permission checks.',
+    level: 'beginner',
   },
   {
     id: 15,
@@ -133,6 +147,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'View encapsulation controls how Angular scopes component styles. The default mode gives component styles local behavior while still allowing global styles when needed.',
+    level: 'intermediate',
   },
   {
     id: 16,
@@ -142,6 +157,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'Reactive forms provide explicit form models and validation in TypeScript, which suits complex forms. Template-driven forms are often simpler for small forms whose behavior is mostly defined in HTML.',
+    level: 'intermediate',
   },
   {
     id: 17,
@@ -151,6 +167,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'An Observable represents a stream of values that can arrive over time. Consumers subscribe to receive values and should manage subscriptions when they are not handled automatically.',
+    level: 'beginner',
   },
   {
     id: 18,
@@ -160,6 +177,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'provideHttpClient() registers Angular HTTP services with the application injector. After it is configured, components and services can inject HttpClient to make requests.',
+    level: 'beginner',
   },
   {
     id: 19,
@@ -169,6 +187,7 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'AsyncPipe connects asynchronous data to a template declaratively. It updates the view as values arrive and handles subscription cleanup when the component is destroyed.',
+    level: 'beginner',
   },
   {
     id: 20,
@@ -178,5 +197,6 @@ export const flashcardsData: Flashcard[] = [
     category: 'angular',
     editorial:
       'Change detection is how Angular keeps the rendered page synchronized with component state. Angular checks bindings and updates only the DOM values affected by changed data.',
+    level: 'beginner',
   },
 ];

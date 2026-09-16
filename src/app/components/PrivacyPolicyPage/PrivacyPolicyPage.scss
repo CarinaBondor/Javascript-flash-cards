@@ -1,0 +1,23 @@
+@use 'styles/branding' as *;
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  padding: $spacing-lg;
+}
+
+.info-card {
+  width: min(900px, 100%);
+
+  mat-divider {
+    margin: $spacing-md 0;
+  }
+
+  section {
+    margin-top: $spacing-md;
+  }
+
+  h3 {
+    margin-bottom: $spacing-sm;
+  }
+}

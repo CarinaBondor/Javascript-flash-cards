@@ -13,7 +13,7 @@ import { CardsService } from '../../services/cards.service';
 })
 export class FlashCardsHolder {
   private readonly cardsService = inject(CardsService);
-  cards: Flashcard[] = this.cardsService.getAll();
+  cards: Flashcard[] = this.cardsService.getAll({ randomize: true });
 
   currentIndex = 0;
   isAnimating = signal(false);

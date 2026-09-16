@@ -2,6 +2,7 @@
   <mat-toolbar class="desktop-toolbar">
     <ul>
       <li><a mat-button routerLink="/" routerLinkActive="active">Home</a></li>
+      <li><a mat-button routerLink="/study" routerLinkActive="active">Study</a></li>
       <li><a mat-button routerLink="/about" routerLinkActive="active">About</a></li>
       <li><a mat-button routerLink="/search" routerLinkActive="active">Search</a></li>
       <li><a mat-button routerLink="/favourites" routerLinkActive="active">Favourites</a></li>
@@ -26,6 +27,14 @@
           (click)="sidenav.close(); sidenavOpened.set(false)"
         >
           Home
+        </a>
+        <a
+          mat-button
+          routerLink="/study"
+          routerLinkActive="active"
+          (click)="sidenav.close(); sidenavOpened.set(false)"
+        >
+          Study
         </a>
         <a
           mat-button

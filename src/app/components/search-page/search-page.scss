@@ -11,13 +11,3 @@
     width: 100%;
   }
 }
-
-.search-results {
-  display: grid;
-  gap: $spacing-md;
-  margin-top: $spacing-lg;
-
-  > p {
-    margin: 0;
-  }
-}

@@ -1,3 +1,25 @@
+@use 'styles/branding' as *;
+
 :host {
   display: block;
+}
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  padding: $spacing-lg;
+}
+
+.home-card {
+  width: min(700px, 100%);
+
+  .lead-text {
+    margin-bottom: $spacing-md;
+  }
+
+  .quick-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
 }

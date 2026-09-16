@@ -7,17 +7,19 @@
       <p>You have no favourited cards.</p>
     } @else {
       <p>Total favourites: {{ favouritedCards().length }}</p>
-
-      <div class="favourited-cards">
-        @for (card of favouritedCards(); track card.id) {
-          <flash-card
-            [cardId]="card.id"
-            [question]="card.question"
-            [answer]="card.answer"
-            class="skinny"
-          />
-        }
-      </div>
     }
   </mat-card-content>
 </mat-card>
+
+<section class="search-results" aria-live="polite">
+  @if (favouritedCards().length > 0) {
+    @for (card of favouritedCards(); track card.id) {
+      <flash-card
+        [cardId]="card.id"
+        [question]="card.question"
+        [answer]="card.answer"
+        class="skinny"
+      />
+    }
+  }
+</section>

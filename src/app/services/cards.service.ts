@@ -8,8 +8,14 @@ import { Flashcard } from '../models/flashcard.model';
 export class CardsService {
   private readonly cards: Flashcard[] = flashcardsData;
 
-  getAll(): Flashcard[] {
-    return this.cards;
+  getAll(options?: { randomize?: boolean }): Flashcard[] {
+    // return this.cards;
+
+    const result = [...this.cards];
+    if (options?.randomize) {
+      result.sort(() => Math.random() - 0.5);
+    }
+    return result;
   }
 
   getById(id: number): Flashcard | undefined {

@@ -36,8 +36,6 @@ mat-card-content,
 
   mat-card-title,
   .mat-mdc-card-title {
-    // margin-top: $spacing-md;
-    // margin-bottom: $spacing-sm;
     display: block;
   }
 }
@@ -47,5 +45,15 @@ mat-card-content,
   mat-card-title {
     font-size: 1.1rem;
     line-height: 1.3;
+  }
+}
+
+.search-results {
+  display: grid;
+  gap: $spacing-md;
+  margin-top: $spacing-md;
+
+  > p {
+    margin: 0;
   }
 }

@@ -1,1 +1,33 @@
-<p>home works!</p>
+<div class="home-container">
+  <mat-card appearance="outlined" class="home-card">
+    <mat-card-header>
+      <mat-card-title>JavaScript Flash Cards</mat-card-title>
+      <mat-card-subtitle
+        >Learn and revisit JavaScript & Angular concepts, one card at a time</mat-card-subtitle
+      >
+    </mat-card-header>
+
+    <mat-card-content>
+      <p class="lead-text">{{ cardCount }} flash cards ready to study.</p>
+
+      <div class="quick-links">
+        <a matButton="filled" routerLink="/study">
+          <mat-icon>school</mat-icon>
+          Start studying
+        </a>
+        <a matButton="tonal" routerLink="/search">
+          <mat-icon>search</mat-icon>
+          Search cards
+        </a>
+        <a matButton="tonal" routerLink="/favourites">
+          <mat-icon>favorite</mat-icon>
+          Favourites
+        </a>
+        <a matButton="tonal" routerLink="/about">
+          <mat-icon>info</mat-icon>
+          About
+        </a>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
