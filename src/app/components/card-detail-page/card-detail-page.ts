@@ -1,5 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { Location } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,6 +18,7 @@ import { FavouriteButton } from '../favouriteButton/favouriteButton';
 export class CardDetailPage {
   private readonly route = inject(ActivatedRoute);
   private readonly cardsService = inject(CardsService);
+  private readonly location = inject(Location);
   private readonly routeParams = toSignal(this.route.paramMap, {
     initialValue: this.route.snapshot.paramMap,
   });
@@ -25,4 +27,8 @@ export class CardDetailPage {
     const id = Number(this.routeParams().get('id'));
     return this.cardsService.getById(id);
   });
+
+  goBack(): void {
+    this.location.back();
+  }
 }

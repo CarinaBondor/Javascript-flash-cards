@@ -1,7 +1,7 @@
 @if (card(); as currentCard) {
   <article class="card-detail-page">
-    <a matButton="tonal" routerLink="/study" class="back-link">
-      <mat-icon>arrow_back</mat-icon> Back to flash cards
+    <a matButton="tonal" (click)="goBack()" class="back-link">
+      <mat-icon>arrow_back</mat-icon> Back
     </a>
 
     <mat-card appearance="outlined" class="article-card">
@@ -36,7 +36,7 @@
       </mat-card-header>
       <mat-card-content class="editorial-content">
         <p class="article-editorial">That flash card does not exist.</p>
-        <a matButton="tonal" routerLink="/study">
+        <a matButton="tonal" (click)="goBack()">
           <mat-icon>arrow_back</mat-icon>
           Return to flash cards
         </a>
