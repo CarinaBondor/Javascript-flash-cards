@@ -19,6 +19,5 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   styleUrl: './menu.component.scss',
 })
 export class Menu {
-  // Drives whether the mobile nav overlay expands to full-screen; only true while the drawer is open.
   protected readonly sidenavOpened = signal(false);
 }

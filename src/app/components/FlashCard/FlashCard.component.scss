@@ -74,4 +74,14 @@
     justify-content: flex-start;
     padding-top: $spacing-sm;
   }
+
+  @media screen and (max-width: $breakpoint-md) {
+    mat-card-title {
+      text-align: left;
+      padding-right: 1.5rem;
+    }
+    mat-card-actions {
+      flex-wrap: wrap;
+    }
+  }
 }

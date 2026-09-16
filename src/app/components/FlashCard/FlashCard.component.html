@@ -10,7 +10,7 @@
     <button matFab extended (click)="toggleAnswer()">
       {{ showAnswer ? 'Hide answer' : 'Show answer' }}
     </button>
-    <a mat-button [routerLink]="['/question', cardId()]">
+    <a matButton="elevated" [routerLink]="['/question', cardId()]">
       <mat-icon>open_in_new</mat-icon>
       Read full card
     </a>

@@ -13,9 +13,9 @@ import { CardsService } from '../../services/cards.service';
 })
 export class FlashCardsHolder {
   private readonly cardsService = inject(CardsService);
-  cards: Flashcard[] = this.cardsService.getAll({ randomize: true });
+  cards: Flashcard[] = this.cardsService.getStudyCards();
 
-  currentIndex = 0;
+  currentIndex = this.cardsService.getStudyIndex();
   isAnimating = signal(false);
 
   get currentCard(): Flashcard | undefined {
@@ -24,14 +24,19 @@ export class FlashCardsHolder {
 
   nextCard() {
     if (this.currentIndex < this.cards.length - 1 && !this.isAnimating()) {
-      this.triggerCardChange(() => this.currentIndex++);
+      this.triggerCardChange(() => this.setIndex(this.currentIndex + 1));
     }
   }
 
   previousCard() {
     if (this.currentIndex > 0 && !this.isAnimating()) {
-      this.triggerCardChange(() => this.currentIndex--);
+      this.triggerCardChange(() => this.setIndex(this.currentIndex - 1));
     }
+  }
+
+  private setIndex(index: number) {
+    this.currentIndex = index;
+    this.cardsService.setStudyIndex(index);
   }
 
   private triggerCardChange(updateIndex: () => void) {
