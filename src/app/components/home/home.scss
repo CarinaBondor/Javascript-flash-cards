@@ -1,9 +1,5 @@
 @use 'styles/branding' as *;
 
-:host {
-  display: block;
-}
-
 .home-container {
   display: flex;
   justify-content: center;
@@ -11,8 +7,12 @@
 }
 
 .home-card {
-  width: min(700px, 100%);
+  width: 100%;
+  text-align: center;
 
+  mat-card-header {
+    justify-content: center;
+  }
   .lead-text {
     margin-bottom: $spacing-md;
   }
@@ -21,5 +21,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: $spacing-sm;
+    justify-content: center;
   }
 }

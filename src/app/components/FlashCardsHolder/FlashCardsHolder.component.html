@@ -1,5 +1,11 @@
 <div class="flash-cards-holder">
-  <button matFab extended class="btn btn-navigation desktop-navigation" (click)="previousCard()">
+  <button
+    matFab
+    extended
+    class="btn btn-navigation desktop-navigation"
+    [disabled]="currentIndex === 0"
+    (click)="previousCard()"
+  >
     <mat-icon>chevron_left</mat-icon>
     Previous
   </button>
@@ -8,6 +14,7 @@
     matFab
     class="btn btn-navigation mobile-navigation"
     aria-label="Previous card"
+    [disabled]="currentIndex === 0"
     (click)="previousCard()"
   >
     <mat-icon>chevron_left</mat-icon>
@@ -22,7 +29,13 @@
     />
   }
 
-  <button matFab extended class="btn btn-navigation desktop-navigation" (click)="nextCard()">
+  <button
+    matFab
+    extended
+    class="btn btn-navigation desktop-navigation"
+    [disabled]="currentIndex === cards.length - 1"
+    (click)="nextCard()"
+  >
     <mat-icon>chevron_right</mat-icon>
     Next
   </button>
@@ -31,6 +44,7 @@
     matFab
     class="btn btn-navigation mobile-navigation"
     aria-label="Next card"
+    [disabled]="currentIndex === cards.length - 1"
     (click)="nextCard()"
   >
     <mat-icon>chevron_right</mat-icon>
