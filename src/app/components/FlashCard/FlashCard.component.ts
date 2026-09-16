@@ -1,4 +1,4 @@
-import { Component, effect, input } from '@angular/core';
+import { Component, effect, input, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FavouriteButton } from '../favouriteButton/favouriteButton';
 import { MatCardModule } from '@angular/material/card';
@@ -16,17 +16,17 @@ export class FlashCard {
   question = input('');
   answer = input('');
   cardId = input.required<number>();
-  showAnswer = false;
+  readonly showAnswer = signal(false);
 
   constructor() {
     effect(() => {
       this.question();
       this.answer();
-      this.showAnswer = false;
+      this.showAnswer.set(false);
     });
   }
 
   toggleAnswer() {
-    this.showAnswer = !this.showAnswer;
+    this.showAnswer.update((v) => !v);
   }
 }
