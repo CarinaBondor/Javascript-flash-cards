@@ -1,0 +1,57 @@
+<main class="challenge-page" aria-labelledby="challenge-title">
+  <header class="page-heading">
+    <p class="eyebrow">Read the code</p>
+    <h1 id="challenge-title">Code Challenge</h1>
+    <p>Trace each snippet and choose the value it produces.</p>
+  </header>
+
+  @if (isComplete()) {
+    <section class="challenge-panel result-panel" aria-live="polite">
+      <p class="eyebrow">Challenges complete</p>
+      <h2>
+        {{ score() }} <span>of {{ challenges.length }}</span>
+      </h2>
+      <p>You solved {{ score() }} {{ score() === 1 ? 'challenge' : 'challenges' }}.</p>
+      <div class="actions">
+        <button type="button" class="primary-action" (click)="restart()">Try again</button>
+        <a routerLink="/quiz" class="text-action">Take a quiz</a>
+      </div>
+    </section>
+  } @else if (currentChallenge(); as challenge) {
+    <section class="challenge-panel" aria-labelledby="task-title">
+      <div class="challenge-meta">
+        <span>Challenge {{ currentIndex() + 1 }} of {{ challenges.length }}</span>
+        <span>Score {{ score() }}</span>
+      </div>
+      <h2 id="task-title">{{ challenge.title }}</h2>
+      <p>{{ challenge.prompt }}</p>
+      <pre><code>{{ challenge.snippet }}</code></pre>
+
+      <div class="answer-list" role="group" aria-label="Choose the output">
+        @for (choice of challenge.choices; track choice) {
+          <button
+            type="button"
+            class="answer-option"
+            [class.is-correct]="selectedAnswer() !== null && choice === challenge.answer"
+            [class.is-incorrect]="selectedAnswer() === choice && !isCorrect()"
+            [attr.aria-pressed]="selectedAnswer() === choice"
+            [disabled]="selectedAnswer() !== null"
+            (click)="selectAnswer(choice)"
+          >
+            {{ choice }}
+          </button>
+        }
+      </div>
+
+      @if (selectedAnswer() !== null) {
+        <div class="answer-feedback" [class.feedback-correct]="isCorrect()" aria-live="polite">
+          <strong>{{ isCorrect() ? 'Correct.' : 'Not quite.' }}</strong>
+          <span>{{ challenge.explanation }}</span>
+        </div>
+        <button type="button" class="primary-action" (click)="nextChallenge()">
+          {{ currentIndex() + 1 === challenges.length ? 'See results' : 'Next challenge' }}
+        </button>
+      }
+    </section>
+  }
+</main>

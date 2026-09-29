@@ -1,0 +1,29 @@
+@use 'styles/branding' as *;
+
+.topic-page {
+  max-width: $site-content-width;
+  margin: 0 auto;
+
+  header {
+    margin: 0 $spacing-md;
+  }
+
+  h1 {
+    margin: 0 0 $spacing-sm;
+    font-size: 2rem;
+  }
+
+  header p:last-child,
+  .empty-state {
+    color: #505a65;
+    line-height: 1.5;
+  }
+}
+
+.eyebrow {
+  margin-bottom: $spacing-sm;
+  color: $color-primary-hover;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}

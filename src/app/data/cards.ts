@@ -199,4 +199,77 @@ export const flashcardsData: Flashcard[] = [
       'Change detection is how Angular keeps the rendered page synchronized with component state. Angular checks bindings and updates only the DOM values affected by changed data.',
     level: 'beginner',
   },
+  {
+    id: 21,
+    question: 'What does const prevent in JavaScript?',
+    answer: 'Reassigning the variable binding; it does not make referenced objects immutable.',
+    category: 'javascript',
+    level: 'beginner',
+  },
+  {
+    id: 22,
+    question: 'What does Array.prototype.map() return?',
+    answer: 'A new array containing the result of applying a callback to each item.',
+    category: 'javascript',
+    level: 'beginner',
+  },
+  {
+    id: 23,
+    question: 'How does === differ from == in JavaScript?',
+    answer: 'Strict equality compares without coercing the operand types.',
+    category: 'javascript',
+    level: 'beginner',
+  },
+  {
+    id: 24,
+    question: 'What does a Promise represent?',
+    answer: 'The eventual completion or failure of an asynchronous operation.',
+    category: 'javascript',
+    level: 'intermediate',
+  },
+  {
+    id: 25,
+    question: 'What is a closure?',
+    answer: 'A function together with access to variables in its surrounding lexical scope.',
+    category: 'javascript',
+    level: 'intermediate',
+  },
+  {
+    id: 26,
+    question: 'What does TypeScript add to JavaScript?',
+    answer:
+      'Static type checking and related language features that are erased when compiled to JavaScript.',
+    category: 'typescript',
+    level: 'beginner',
+  },
+  {
+    id: 27,
+    question: 'What is a union type in TypeScript?',
+    answer: 'A type that allows a value to be one of several specified types.',
+    category: 'typescript',
+    level: 'beginner',
+  },
+  {
+    id: 28,
+    question: 'What is a generic type used for?',
+    answer:
+      'Writing reusable code that works with different types while preserving type information.',
+    category: 'typescript',
+    level: 'intermediate',
+  },
+  {
+    id: 29,
+    question: 'How does unknown differ from any?',
+    answer:
+      'A value typed unknown must be narrowed before use, while any disables most type checking.',
+    category: 'typescript',
+    level: 'intermediate',
+  },
+  {
+    id: 30,
+    question: 'What does an interface describe?',
+    answer: 'The expected shape of a value, such as the properties and types of an object.',
+    category: 'typescript',
+    level: 'beginner',
+  },
 ];
