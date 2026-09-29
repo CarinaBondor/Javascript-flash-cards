@@ -2,7 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { CardsService } from '../../services/cards.service';
 import { FavouritesService } from '../../services/favourites.service';
 import { MatCardModule } from '@angular/material/card';
-import { FlashCard } from '../FlashCard/FlashCard.component';
+import { FlashCard } from '../../components/FlashCard/FlashCard.component';
 
 @Component({
   selector: 'app-favourites-page',

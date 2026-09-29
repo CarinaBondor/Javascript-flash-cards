@@ -5,7 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Flashcard } from '../../models/flashcard.model';
 import { SearchService } from '../../services/search.service';
-import { FlashCard } from '../FlashCard/FlashCard.component';
+import { FlashCard } from '../../components/FlashCard/FlashCard.component';
 
 @Component({
   selector: 'app-search-page',

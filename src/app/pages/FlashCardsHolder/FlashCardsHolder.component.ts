@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { FlashCard } from '../FlashCard/FlashCard.component';
+import { FlashCard } from '../../components/FlashCard/FlashCard.component';
 import { Flashcard } from '../../models/flashcard.model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
