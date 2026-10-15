@@ -1,4 +1,4 @@
-<main class="topic-page" aria-labelledby="topic-title">
+<section class="topic-page" aria-labelledby="topic-title">
   <header>
     <p class="eyebrow">Study deck</p>
     <h1 id="topic-title">{{ title }}</h1>
@@ -6,8 +6,8 @@
   </header>
 
   @if (cards.length) {
-    <flash-cards-holder [cardsOverride]="cards" />
+    <flash-cards-holder [deck]="category" />
   } @else {
     <p class="empty-state">No cards are available for this topic yet.</p>
   }
-</main>
+</section>

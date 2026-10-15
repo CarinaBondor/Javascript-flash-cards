@@ -1,4 +1,4 @@
-import { Component, effect, input, signal } from '@angular/core';
+import { Component, input, linkedSignal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FavouriteButton } from '../favouriteButton/favouriteButton';
 import { MatCardModule } from '@angular/material/card';
@@ -16,15 +16,12 @@ export class FlashCard {
   question = input('');
   answer = input('');
   cardId = input.required<number>();
-  readonly showAnswer = signal(false);
 
-  constructor() {
-    effect(() => {
-      this.question();
-      this.answer();
-      this.showAnswer.set(false);
-    });
-  }
+  // Hidden again whenever a different card is shown, but still toggleable locally.
+  readonly showAnswer = linkedSignal({
+    source: this.cardId,
+    computation: () => false,
+  });
 
   toggleAnswer() {
     this.showAnswer.update((v) => !v);

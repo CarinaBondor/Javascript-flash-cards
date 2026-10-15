@@ -2,16 +2,24 @@ import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@a
 import { RouterLink } from '@angular/router';
 import { CardsService } from '../../services/cards.service';
 import { Flashcard } from '../../models/flashcard.model';
+import { shuffled } from '../../utils/shuffle';
 
-function shuffled<T>(items: T[]): T[] {
-  const result = [...items];
-  for (let index = result.length - 1; index > 0; index--) {
-    const swapIndex = Math.floor(Math.random() * (index + 1));
-    const currentItem = result[index]!;
-    result[index] = result[swapIndex]!;
-    result[swapIndex] = currentItem;
-  }
-  return result;
+const DISTRACTOR_COUNT = 3;
+
+// Picks wrong answers from the same category first, so the right answer can't be guessed by topic alone.
+// Answers are unique and never equal the correct one, so they're safe to track by text.
+export function pickDistractors(question: Flashcard, cards: readonly Flashcard[]): string[] {
+  const otherAnswers = (sameCategory: boolean) =>
+    shuffled(
+      cards
+        .filter((card) => card.id !== question.id)
+        .filter((card) => (card.category === question.category) === sameCategory)
+        .map((card) => card.answer),
+    );
+
+  const unique = new Set([...otherAnswers(true), ...otherAnswers(false)]);
+  unique.delete(question.answer);
+  return [...unique].slice(0, DISTRACTOR_COUNT);
 }
 
 @Component({
@@ -77,9 +85,6 @@ export class QuizPage {
       this.choices.set([]);
       return;
     }
-    const distractors = shuffled([
-      ...new Set(this.cards.filter((card) => card.id !== question.id).map((card) => card.answer)),
-    ]).slice(0, 3);
-    this.choices.set(shuffled([question.answer, ...distractors]));
+    this.choices.set(shuffled([question.answer, ...pickDistractors(question, this.cards)]));
   }
 }

@@ -21,10 +21,8 @@ const categoryTitles: Record<StudyCategory, string> = {
 })
 export class StudyTopicPage {
   private readonly cardsService = inject(CardsService);
-  private readonly category = inject(ActivatedRoute).snapshot.data['category'] as StudyCategory;
+  readonly category = inject(ActivatedRoute).snapshot.data['category'] as StudyCategory;
 
   readonly title = categoryTitles[this.category];
-  readonly cards: Flashcard[] = this.cardsService
-    .getAll({ randomize: true })
-    .filter((card) => card.category === this.category);
+  readonly cards: Flashcard[] = this.cardsService.getDeckCards(this.category);
 }

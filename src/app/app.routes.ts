@@ -10,6 +10,7 @@ import { Home } from './pages/home/home';
 import { QuizPage } from './components/quiz-page/quiz-page';
 import { CodeChallengePage } from './components/code-challenge-page/code-challenge-page';
 import { StudyTopicPage } from './pages/study-topic-page/study-topic-page';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -25,4 +26,5 @@ export const routes: Routes = [
   { path: 'code-challenge', component: CodeChallengePage },
   { path: 'privacy-policy', component: PrivacyPolicyPage },
   { path: 'cookie-policy', component: CookiePolicyPage },
+  { path: '**', component: NotFoundPage },
 ];

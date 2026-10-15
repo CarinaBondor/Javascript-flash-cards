@@ -1,9 +1,8 @@
-import { Component, computed, effect, inject, input, signal } from '@angular/core';
+import { Component, DestroyRef, computed, inject, input, linkedSignal, signal } from '@angular/core';
 import { FlashCard } from '../FlashCard/FlashCard.component';
-import { Flashcard } from '../../models/flashcard.model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { CardsService } from '../../services/cards.service';
+import { CardsService, DeckKey } from '../../services/cards.service';
 
 @Component({
   selector: 'flash-cards-holder',
@@ -13,46 +12,39 @@ import { CardsService } from '../../services/cards.service';
 })
 export class FlashCardsHolder {
   private readonly cardsService = inject(CardsService);
-  readonly cardsOverride = input<Flashcard[] | null>(null);
-  readonly cards = computed(() => this.cardsOverride() ?? this.cardsService.getStudyCards());
+  readonly deck = input<DeckKey>('all');
+  readonly cards = computed(() => this.cardsService.getDeckCards(this.deck()));
 
-  currentIndex = signal(this.cardsService.getStudyIndex());
-  isAnimating = signal(false);
+  // Starts at the deck's saved position, re-syncs if the deck input changes, and can still be set locally.
+  readonly currentIndex = linkedSignal(() => this.cardsService.getDeckIndex(this.deck()));
+  readonly currentCard = computed(() => this.cards()[this.currentIndex()]);
+  readonly isAnimating = signal(false);
+
+  private animationTimer?: ReturnType<typeof setTimeout>;
 
   constructor() {
-    effect(() => {
-      if (this.cardsOverride() !== null) this.currentIndex.set(0);
-    });
-  }
-
-  get currentCard(): Flashcard | undefined {
-    return this.cards()[this.currentIndex()];
+    inject(DestroyRef).onDestroy(() => clearTimeout(this.animationTimer));
   }
 
   nextCard() {
     if (this.currentIndex() < this.cards().length - 1 && !this.isAnimating()) {
-      this.triggerCardChange(() => this.setIndex(this.currentIndex() + 1));
+      this.triggerCardChange(this.currentIndex() + 1);
     }
   }
 
   previousCard() {
     if (this.currentIndex() > 0 && !this.isAnimating()) {
-      this.triggerCardChange(() => this.setIndex(this.currentIndex() - 1));
+      this.triggerCardChange(this.currentIndex() - 1);
     }
   }
 
-  private setIndex(index: number) {
-    this.currentIndex.set(index);
-    if (this.cardsOverride() === null) this.cardsService.setStudyIndex(index);
-  }
-
-  private triggerCardChange(updateIndex: () => void) {
+  private triggerCardChange(index: number) {
+    // Save the position straight away, so navigating away mid-animation can't lose it.
+    this.cardsService.setDeckIndex(this.deck(), index);
     this.isAnimating.set(true);
-    setTimeout(() => {
-      updateIndex();
-      setTimeout(() => {
-        this.isAnimating.set(false);
-      }, 40);
+    this.animationTimer = setTimeout(() => {
+      this.currentIndex.set(index);
+      this.animationTimer = setTimeout(() => this.isAnimating.set(false), 40);
     }, 100);
   }
 }

@@ -1,9 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Flashcard } from '../../models/flashcard.model';
 import { SearchService } from '../../services/search.service';
 import { FlashCard } from '../../components/FlashCard/FlashCard.component';
 
@@ -14,12 +13,10 @@ import { FlashCard } from '../../components/FlashCard/FlashCard.component';
   styleUrl: './search-page.scss',
 })
 export class SearchPage {
-  searchQuery = '';
-  results: Flashcard[] = [];
   private readonly searchService = inject(SearchService);
 
-  searchFlashcards(query = this.searchQuery): void {
-    this.searchQuery = query;
-    this.results = this.searchService.search(query);
-  }
+  // Signals tell zoneless Angular when to re-render, however the query gets updated.
+  readonly searchQuery = signal('');
+  readonly hasQuery = computed(() => this.searchQuery().trim().length > 0);
+  readonly results = computed(() => this.searchService.search(this.searchQuery()));
 }

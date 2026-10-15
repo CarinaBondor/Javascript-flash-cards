@@ -20,12 +20,12 @@
     <mat-icon>chevron_left</mat-icon>
   </button>
 
-  @if (currentCard) {
+  @if (currentCard(); as card) {
     <flash-card
       [class.card-changing]="isAnimating()"
-      [cardId]="currentCard.id"
-      [question]="currentCard.question"
-      [answer]="currentCard.answer"
+      [cardId]="card.id"
+      [question]="card.question"
+      [answer]="card.answer"
     />
   }
 

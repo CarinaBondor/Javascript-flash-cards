@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core';
 import { flashcardsData } from '../data/cards';
 import { Flashcard } from '../models/flashcard.model';
+import { shuffled } from '../utils/shuffle';
+
+// 'all' is the full /study deck; any other key is a card category.
+export type DeckKey = 'all' | string;
+
+interface StudyDeck {
+  cards: Flashcard[];
+  index: number;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -8,41 +17,40 @@ import { Flashcard } from '../models/flashcard.model';
 export class CardsService {
   private readonly cards: Flashcard[] = flashcardsData;
 
-  // Keeps the study order and position alive across navigation, since components are recreated on route change.
-  private studyCards: Flashcard[] | null = null;
-  private studyIndex = 0;
+  // Keeps each deck's order and position alive across navigation, since components are recreated on route change.
+  private readonly decks = new Map<DeckKey, StudyDeck>();
 
   getAll(options?: { randomize?: boolean }): Flashcard[] {
-    // return this.cards;
-
-    const result = [...this.cards];
-    if (options?.randomize) {
-      result.sort(() => Math.random() - 0.5);
-    }
-    return result;
+    return options?.randomize ? shuffled(this.cards) : [...this.cards];
   }
 
   getById(id: number): Flashcard | undefined {
     return this.cards.find((card) => card.id === id);
   }
 
-  getStudyCards(): Flashcard[] {
-    if (!this.studyCards) {
-      this.studyCards = this.getAll({ randomize: true });
+  getDeckCards(key: DeckKey): Flashcard[] {
+    return this.getDeck(key).cards;
+  }
+
+  getDeckIndex(key: DeckKey): number {
+    return this.getDeck(key).index;
+  }
+
+  setDeckIndex(key: DeckKey, index: number): void {
+    this.getDeck(key).index = index;
+  }
+
+  resetDeck(key: DeckKey): void {
+    this.decks.delete(key);
+  }
+
+  private getDeck(key: DeckKey): StudyDeck {
+    let deck = this.decks.get(key);
+    if (!deck) {
+      const source = key === 'all' ? this.cards : this.cards.filter((card) => card.category === key);
+      deck = { cards: shuffled(source), index: 0 };
+      this.decks.set(key, deck);
     }
-    return this.studyCards;
-  }
-
-  getStudyIndex(): number {
-    return this.studyIndex;
-  }
-
-  setStudyIndex(index: number): void {
-    this.studyIndex = index;
-  }
-
-  resetStudySession(): void {
-    this.studyCards = null;
-    this.studyIndex = 0;
+    return deck;
   }
 }
