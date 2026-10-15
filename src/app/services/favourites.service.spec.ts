@@ -9,6 +9,11 @@ describe('FavouritesService', () => {
     localStorage.clear();
   });
 
+  // Spec files share one jsdom environment, so leave localStorage empty for whichever file runs next.
+  afterEach(() => {
+    localStorage.clear();
+  });
+
   it('adds and removes a favourite', () => {
     const service = TestBed.inject(FavouritesService);
 

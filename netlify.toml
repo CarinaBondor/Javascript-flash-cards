@@ -1,0 +1,10 @@
+# Netlify config. Settings here override the Netlify dashboard.
+
+[build]
+  command = "npm run build"
+  publish = "dist/javascript-flash-cards/browser"
+
+  # For now, CI runs in GitHub Actions (.github/workflows/ci.yml) only.
+  # Netlify skips the build when this command exits 0, so pull request previews
+  # and branch deploys are skipped. Production deploys from main still run.
+  ignore = 'if [ "$CONTEXT" = "production" ]; then exit 1; else exit 0; fi'
