@@ -30,5 +30,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Linting
+        run: npm run prettify && npm run lint
+
       - name: Verify application
         run: npm run verify
