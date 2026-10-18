@@ -4,7 +4,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { SearchService } from "../../services/search.service";
-import { FlashCard } from "../../components/FlashCard/FlashCard.component";
+import { FlashCard } from "../../components/appFlashCard/appFlashCard.component";
 
 @Component({
   selector: "app-search-page",

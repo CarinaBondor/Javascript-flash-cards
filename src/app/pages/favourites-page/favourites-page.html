@@ -14,7 +14,7 @@
 <section class="search-results" aria-live="polite">
   @if (favouritedCards().length > 0) {
     @for (card of favouritedCards(); track card.id) {
-      <flash-card
+      <app-flash-card
         [cardId]="card.id"
         [question]="card.question"
         [answer]="card.answer"

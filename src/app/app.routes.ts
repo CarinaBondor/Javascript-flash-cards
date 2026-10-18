@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { FlashCardsHolder } from "./components/FlashCardsHolder/FlashCardsHolder.component";
+import { FlashCardsHolder } from "./components/appFlashCardsHolder/appFlashCardsHolder.component";
 import { AboutPage } from "./pages/AboutPage/AboutPage";
 import { SearchPage } from "./pages/search-page/search-page";
 import { FavouritesPage } from "./pages/favourites-page/favourites-page";

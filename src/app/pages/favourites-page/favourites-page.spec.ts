@@ -30,7 +30,7 @@ describe("FavouritesPage", () => {
     const page = await createPage();
 
     expect(page.textContent).toContain("You have no favourited cards.");
-    expect(page.querySelectorAll("flash-card").length).toBe(0);
+    expect(page.querySelectorAll("app-flash-card").length).toBe(0);
   });
 
   it("renders a card for each saved favourite", async () => {
@@ -39,6 +39,6 @@ describe("FavouritesPage", () => {
     const page = await createPage();
 
     expect(page.textContent).toContain("Total favourites: 2");
-    expect(page.querySelectorAll("flash-card").length).toBe(2);
+    expect(page.querySelectorAll("app-flash-card").length).toBe(2);
   });
 });

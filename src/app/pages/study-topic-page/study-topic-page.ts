@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { FlashCardsHolder } from "../../components/FlashCardsHolder/FlashCardsHolder.component";
+import { FlashCardsHolder } from "../../components/appFlashCardsHolder/appFlashCardsHolder.component";
 import { Flashcard } from "../../models/flashcard.model";
 import { CardsService } from "../../services/cards.service";
 

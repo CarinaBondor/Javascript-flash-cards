@@ -22,7 +22,7 @@
 
     @if (results().length) {
       @for (card of results(); track card.id) {
-        <flash-card
+        <app-flash-card
           [cardId]="card.id"
           [question]="card.question"
           [answer]="card.answer"

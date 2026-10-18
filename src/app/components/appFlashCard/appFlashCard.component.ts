@@ -1,16 +1,16 @@
 import { Component, input, linkedSignal } from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
-import { FavouriteButton } from "../favouriteButton/favouriteButton";
+import { FavouriteButton } from "../appFavouriteButton/appFavouriteButton";
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
 import { RouterLink } from "@angular/router";
 
 @Component({
-  selector: "flash-card",
+  selector: "app-flash-card",
   standalone: true,
   imports: [MatIconModule, FavouriteButton, MatCardModule, MatButtonModule, RouterLink],
-  templateUrl: "./FlashCard.component.html",
-  styleUrl: "./FlashCard.component.scss",
+  templateUrl: "./appFlashCard.component.html",
+  styleUrl: "./appFlashCard.component.scss",
 })
 export class FlashCard {
   question = input("");

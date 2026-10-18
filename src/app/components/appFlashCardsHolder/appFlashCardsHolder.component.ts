@@ -7,16 +7,16 @@ import {
   linkedSignal,
   signal,
 } from "@angular/core";
-import { FlashCard } from "../FlashCard/FlashCard.component";
+import { FlashCard } from "../appFlashCard/appFlashCard.component";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { CardsService, DeckKey } from "../../services/cards.service";
 
 @Component({
-  selector: "flash-cards-holder",
+  selector: "app-flash-cards-holder",
   imports: [FlashCard, MatButtonModule, MatIconModule],
-  templateUrl: "./FlashCardsHolder.component.html",
-  styleUrl: "./FlashCardsHolder.component.scss",
+  templateUrl: "./appFlashCardsHolder.component.html",
+  styleUrl: "./appFlashCardsHolder.component.scss",
 })
 export class FlashCardsHolder {
   private readonly cardsService = inject(CardsService);

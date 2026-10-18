@@ -40,7 +40,9 @@ describe("FavouritesService", () => {
 
   it("falls back to no favourites when storage holds bad JSON", () => {
     localStorage.setItem(STORAGE_KEY, "{not json");
-    vi.spyOn(console, "error").mockImplementation(() => {});
+    vi.spyOn(console, "error").mockImplementation(() => {
+      // Silence the expected "Failed to load favourites" error in the test output.
+    });
     const service = TestBed.inject(FavouritesService);
     expect(service.favouriteIds()).toEqual([]);
   });

@@ -6,7 +6,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { CardsService } from "../../services/cards.service";
-import { FavouriteButton } from "../../components/favouriteButton/favouriteButton";
+import { FavouriteButton } from "../../components/appFavouriteButton/appFavouriteButton";
 
 @Component({
   selector: "app-card-detail-page",

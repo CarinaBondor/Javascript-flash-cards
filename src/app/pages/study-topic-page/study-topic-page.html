@@ -6,7 +6,7 @@
   </header>
 
   @if (cards.length) {
-    <flash-cards-holder [deck]="category" />
+    <app-flash-cards-holder [deck]="category" />
   } @else {
     <p class="empty-state">No cards are available for this topic yet.</p>
   }

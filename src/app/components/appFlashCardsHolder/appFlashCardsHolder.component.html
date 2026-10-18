@@ -21,7 +21,7 @@
   </button>
 
   @if (currentCard(); as card) {
-    <flash-card
+    <app-flash-card
       [class.card-changing]="isAnimating()"
       [cardId]="card.id"
       [question]="card.question"
