@@ -1,9 +1,9 @@
-import { Injectable, inject } from '@angular/core';
-import { Flashcard } from '../models/flashcard.model';
-import { CardsService } from './cards.service';
+import { Injectable, inject } from "@angular/core";
+import { Flashcard } from "../models/flashcard.model";
+import { CardsService } from "./cards.service";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class SearchService {
   private readonly cardsService = inject(CardsService);
@@ -18,7 +18,7 @@ export class SearchService {
     return this.cardsService.getAll().filter((card) => {
       const searchableText = [card.question, card.answer, card.category]
         .filter(Boolean)
-        .join(' ')
+        .join(" ")
         .toLowerCase();
 
       return searchableText.includes(normalizedQuery);

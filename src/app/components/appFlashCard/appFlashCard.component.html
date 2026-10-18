@@ -3,12 +3,12 @@
     <mat-card-title>
       <h2>{{ question() }}</h2>
     </mat-card-title>
-    <favourite-button [cardId]="cardId()" />
+    <app-favourite-button [cardId]="cardId()" />
   </mat-card-header>
 
   <mat-card-actions>
     <button matFab extended (click)="toggleAnswer()">
-      {{ showAnswer() ? 'Hide answer' : 'Show answer' }}
+      {{ showAnswer() ? "Hide answer" : "Show answer" }}
     </button>
     <a matButton [routerLink]="['/question', cardId()]">
       <mat-icon>open_in_new</mat-icon>

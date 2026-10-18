@@ -1,19 +1,19 @@
-import { Component, computed, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { Location } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { CardsService } from '../../services/cards.service';
-import { FavouriteButton } from '../../components/favouriteButton/favouriteButton';
+import { Component, computed, inject } from "@angular/core";
+import { toSignal } from "@angular/core/rxjs-interop";
+import { Location } from "@angular/common";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
+import { MatIconModule } from "@angular/material/icon";
+import { ActivatedRoute, RouterLink } from "@angular/router";
+import { CardsService } from "../../services/cards.service";
+import { FavouriteButton } from "../../components/appFavouriteButton/appFavouriteButton";
 
 @Component({
-  selector: 'app-card-detail-page',
+  selector: "app-card-detail-page",
   standalone: true,
   imports: [MatButtonModule, MatCardModule, MatIconModule, RouterLink, FavouriteButton],
-  templateUrl: './card-detail-page.html',
-  styleUrl: './card-detail-page.scss',
+  templateUrl: "./card-detail-page.html",
+  styleUrl: "./card-detail-page.scss",
 })
 export class CardDetailPage {
   private readonly route = inject(ActivatedRoute);
@@ -24,7 +24,7 @@ export class CardDetailPage {
   });
 
   readonly card = computed(() => {
-    const id = Number(this.routeParams().get('id'));
+    const id = Number(this.routeParams().get("id"));
     return this.cardsService.getById(id);
   });
 

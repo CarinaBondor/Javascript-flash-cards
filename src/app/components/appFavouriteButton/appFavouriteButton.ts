@@ -1,13 +1,13 @@
-import { Component, computed, inject, input } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { FavouritesService } from '../../services/favourites.service';
+import { Component, computed, inject, input } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { FavouritesService } from "../../services/favourites.service";
 
 @Component({
-  selector: 'favourite-button',
+  selector: "app-favourite-button",
   standalone: true,
   imports: [MatIconModule, MatButtonModule],
-  templateUrl: './favouriteButton.html',
+  templateUrl: "./appFavouriteButton.html",
 })
 export class FavouriteButton {
   readonly cardId = input.required<number>();

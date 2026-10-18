@@ -1,14 +1,14 @@
-import { Component, computed, inject } from '@angular/core';
-import { CardsService } from '../../services/cards.service';
-import { FavouritesService } from '../../services/favourites.service';
-import { MatCardModule } from '@angular/material/card';
-import { FlashCard } from '../../components/FlashCard/FlashCard.component';
+import { Component, computed, inject } from "@angular/core";
+import { CardsService } from "../../services/cards.service";
+import { FavouritesService } from "../../services/favourites.service";
+import { MatCardModule } from "@angular/material/card";
+import { FlashCard } from "../../components/appFlashCard/appFlashCard.component";
 
 @Component({
-  selector: 'app-favourites-page',
+  selector: "app-favourites-page",
   imports: [MatCardModule, FlashCard],
-  templateUrl: './favourites-page.html',
-  styleUrl: './favourites-page.scss',
+  templateUrl: "./favourites-page.html",
+  styleUrl: "./favourites-page.scss",
 })
 export class FavouritesPage {
   private readonly cardsService = inject(CardsService);

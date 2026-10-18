@@ -4,5 +4,5 @@ export interface Flashcard {
   answer: string;
   category?: string;
   editorial?: string;
-  level: 'beginner' | 'intermediate' | 'advanced';
+  level: "beginner" | "intermediate" | "advanced";
 }

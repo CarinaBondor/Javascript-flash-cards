@@ -18,11 +18,11 @@
 
 @if (hasQuery()) {
   <section class="search-results" aria-live="polite">
-    <p>{{ results().length }} result{{ results().length === 1 ? '' : 's' }} found</p>
+    <p>{{ results().length }} result{{ results().length === 1 ? "" : "s" }} found</p>
 
     @if (results().length) {
       @for (card of results(); track card.id) {
-        <flash-card
+        <app-flash-card
           [cardId]="card.id"
           [question]="card.question"
           [answer]="card.answer"
