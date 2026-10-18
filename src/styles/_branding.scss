@@ -1,4 +1,4 @@
-@use 'sass:map';
+@use "sass:map";
 
 // =============================================================================
 // Theme & Branding Tokens
@@ -28,12 +28,12 @@ $breakpoint-xl: 1280px;
 $breakpoint-2xl: 1440px;
 
 $breakpoints: (
-  'xs': $breakpoint-xs,
-  'sm': $breakpoint-sm,
-  'md': $breakpoint-md,
-  'lg': $breakpoint-lg,
-  'xl': $breakpoint-xl,
-  '2xl': $breakpoint-2xl,
+  "xs": $breakpoint-xs,
+  "sm": $breakpoint-sm,
+  "md": $breakpoint-md,
+  "lg": $breakpoint-lg,
+  "xl": $breakpoint-xl,
+  "2xl": $breakpoint-2xl,
 );
 
 // =============================================================================
@@ -89,12 +89,12 @@ $container-padding-desktop: 2rem;
   padding-left: $container-padding-mobile;
   padding-right: $container-padding-mobile;
 
-  @include respond-to('md') {
+  @include respond-to("md") {
     padding-left: $container-padding-tablet;
     padding-right: $container-padding-tablet;
   }
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     padding-left: $container-padding-desktop;
     padding-right: $container-padding-desktop;
   }

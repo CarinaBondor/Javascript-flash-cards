@@ -1,11 +1,11 @@
-import { Injectable, signal, computed } from '@angular/core';
-import { Flashcard } from '../models/flashcard.model';
+import { Injectable, signal, computed } from "@angular/core";
+import { Flashcard } from "../models/flashcard.model";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class FavouritesService {
-  private readonly STORAGE_KEY = 'flashcard_favourites';
+  private readonly STORAGE_KEY = "flashcard_favourites";
 
   readonly favouriteIds = signal<number[]>(this.loadFromStorage());
 
@@ -18,7 +18,7 @@ export class FavouritesService {
       const data = localStorage.getItem(this.STORAGE_KEY);
       return data ? JSON.parse(data) : [];
     } catch (error) {
-      console.error('Failed to load favourites from storage', error);
+      console.error("Failed to load favourites from storage", error);
       return [];
     }
   }
@@ -28,7 +28,7 @@ export class FavouritesService {
     try {
       localStorage.setItem(this.STORAGE_KEY, JSON.stringify(ids));
     } catch (error) {
-      console.error('Failed to save favourites to storage', error);
+      console.error("Failed to save favourites to storage", error);
     }
   }
 

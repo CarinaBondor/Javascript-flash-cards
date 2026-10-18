@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SearchPage } from './search-page';
+import { SearchPage } from "./search-page";
 
-describe('SearchPage', () => {
+describe("SearchPage", () => {
   let component: SearchPage;
   let fixture: ComponentFixture<SearchPage>;
 
@@ -16,7 +16,7 @@ describe('SearchPage', () => {
     await fixture.whenStable();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { flashcardsData } from '../data/cards';
-import { Flashcard } from '../models/flashcard.model';
-import { shuffled } from '../utils/shuffle';
+import { Injectable } from "@angular/core";
+import { flashcardsData } from "../data/cards";
+import { Flashcard } from "../models/flashcard.model";
+import { shuffled } from "../utils/shuffle";
 
 // 'all' is the full /study deck; any other key is a card category.
-export type DeckKey = 'all' | string;
+export type DeckKey = "all" | string;
 
 interface StudyDeck {
   cards: Flashcard[];
@@ -12,7 +12,7 @@ interface StudyDeck {
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class CardsService {
   private readonly cards: Flashcard[] = flashcardsData;
@@ -47,7 +47,8 @@ export class CardsService {
   private getDeck(key: DeckKey): StudyDeck {
     let deck = this.decks.get(key);
     if (!deck) {
-      const source = key === 'all' ? this.cards : this.cards.filter((card) => card.category === key);
+      const source =
+        key === "all" ? this.cards : this.cards.filter((card) => card.category === key);
       deck = { cards: shuffled(source), index: 0 };
       this.decks.set(key, deck);
     }

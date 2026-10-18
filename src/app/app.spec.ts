@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
-import { App } from './app';
+import { TestBed } from "@angular/core/testing";
+import { provideRouter } from "@angular/router";
+import { App } from "./app";
 
-describe('App', () => {
+describe("App", () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
@@ -10,18 +10,18 @@ describe('App', () => {
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  it("should create the app", () => {
     const fixture = TestBed.createComponent(App);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it('should render the menu, a single main landmark and the footer', async () => {
+  it("should render the menu, a single main landmark and the footer", async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('app-menu')).toBeTruthy();
-    expect(compiled.querySelectorAll('main').length).toBe(1);
-    expect(compiled.querySelector('app-footer')).toBeTruthy();
+    expect(compiled.querySelector("app-menu")).toBeTruthy();
+    expect(compiled.querySelectorAll("main").length).toBe(1);
+    expect(compiled.querySelector("app-footer")).toBeTruthy();
   });
 });
