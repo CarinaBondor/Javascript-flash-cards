@@ -9,7 +9,8 @@
     "test": "ng test",
     "prettify": "npx prettier --check .",
     "verify": "npm test && npm run build",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "prepare": "husky"
   },
   "private": true,
   "packageManager": "npm@11.6.1",
@@ -32,6 +33,7 @@
     "@eslint/js": "^10.0.1",
     "angular-eslint": "21.4.0",
     "eslint": "^10.3.0",
+    "husky": "^9.1.7",
     "jsdom": "^28.0.0",
     "prettier": "^3.8.1",
     "typescript": "~5.9.2",
