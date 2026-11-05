@@ -1,63 +1,153 @@
 @use "@angular/material" as mat;
 @use "styles/reset";
+@use "styles/theme-colors" as theme;
+@use "styles/topics";
+@use "styles/card-list";
 @use "styles/branding" as *;
 
 html {
   height: 100%;
+  // Follows the visitor's light or dark system setting.
+  color-scheme: light dark;
+
+  // Set by ThemeService. With no attribute, the page follows the system setting.
+  // `&` means "this same <html>", so these compile to html[data-theme="..."].
+  &[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  &[data-theme="dark"] {
+    color-scheme: dark;
+  }
+
   @include mat.theme(
     (
       color: (
-        primary: mat.$violet-palette,
-        tertiary: mat.$orange-palette,
+        primary: theme.$primary-palette,
+        tertiary: theme.$tertiary-palette,
+        theme-type: color-scheme,
       ),
-      typography: Montserrat,
-      density: 2,
+      typography: (
+        plain-family: $font-family,
+        brand-family: $font-family,
+      ),
+      density: 0,
     )
   );
-  @include mat.card-overrides(
+
+  // A deeper ink for filled buttons and a cooler page background than the generated palette.
+  @include mat.theme-overrides(
     (
-      title-text-weight: 700,
+      primary: light-dark(#2c3163, #bec2fe),
+      surface: light-dark(#f2f4f7, #12141c),
+    )
+  );
+
+  @include mat.form-field-overrides(
+    (
+      outlined-container-shape: 28px,
     )
   );
 }
 
+:root {
+  // Card surfaces sit one step above the page in both themes.
+  --app-card: light-dark(#ffffff, #1c1f2a);
+  --app-card-high: light-dark(#e7eaf0, #262a37);
+  --app-card-shadow: light-dark(0 1px 2px rgb(26 28 38 / 6%), 0 1px 2px rgb(0 0 0 / 40%));
+  --app-card-shadow-raised: light-dark(
+    0 8px 24px -6px rgb(26 28 38 / 14%),
+    0 10px 28px -6px rgb(0 0 0 / 55%)
+  );
+}
+
+// The cross-fade when switching theme (started by ThemeService with startViewTransition).
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 350ms;
+  animation-timing-function: ease-in-out;
+}
+
 body {
-  color-scheme: light;
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
-  font: var(--mat-sys-body-medium);
+  font-family: $font-family;
+  font-size: 1rem;
+  line-height: 1.5;
   margin: 0;
   height: 100%;
 }
 
-mat-card-content,
-.mat-mdc-card-content {
-  padding-top: $spacing-md !important;
+// Headings use Recursive's "casual" axis; body text stays linear.
+h1,
+h2,
+h3,
+.display {
+  //font-variation-settings: "CASL" 1;
+  letter-spacing: -0.015em;
+}
 
-  mat-card-title,
-  .mat-mdc-card-title {
-    display: block;
+code {
+  font-family: $font-family;
+  font-variation-settings: "MONO" 1;
+  font-size: 0.92em;
+}
+
+// Material Symbols: outlined by default, filled where a component asks for it.
+.material-symbols-rounded {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "opsz" 24;
+
+  &.is-filled {
+    font-variation-settings:
+      "FILL" 1,
+      "wght" 400,
+      "opsz" 24;
   }
 }
 
-@media (max-width: $breakpoint-sm) {
-  .mat-mdc-card-title,
-  mat-card-title {
-    font-size: 1.1rem;
-    line-height: 1.3;
+:focus-visible {
+  outline: 3px solid var(--mat-sys-primary);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+// Shared page heading used by Decks, Search, Favourites.
+.page-heading {
+  margin-bottom: 32px;
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.05;
+  }
+
+  p {
+    margin-top: 12px;
+    max-width: 34rem;
+    color: var(--mat-sys-on-surface-variant);
+    font-size: 1.125rem;
   }
 }
 
-.search-results {
-  display: grid;
-  gap: $spacing-md;
-  margin-top: $spacing-md;
+// The page container around the router outlet. Defined here, not in _branding.scss, so it isn't
+// copied into every component stylesheet that uses the branding variables.
+.site-container {
+  @include site-container(1040px);
+  padding-top: 48px;
+  padding-bottom: 96px;
 
-  > p {
-    margin: 0;
-  }
-
-  mat-mdc-card-title {
-    text-align: left;
+  @include respond-below("sm") {
+    padding-top: 28px;
   }
 }

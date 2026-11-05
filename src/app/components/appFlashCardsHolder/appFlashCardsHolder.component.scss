@@ -1,27 +1,56 @@
 @use "styles/branding" as *;
 
-.flash-cards-holder {
-  display: flex;
-  flex-direction: row;
-  gap: $spacing-md;
-  padding: $spacing-md;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center;
-  min-height: 40dvh;
+:host {
+  display: block;
+}
 
-  @media (max-width: $breakpoint-sm) {
-    flex-direction: column;
+.stage {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 640px) 56px;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+
+  @include respond-below("sm") {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+
+    .pager-fab {
+      display: none;
+    }
   }
 }
 
+.pager-fab {
+  background: var(--app-card);
+  color: var(--mat-sys-on-surface);
+}
+
+.card-wrap {
+  position: relative;
+}
+
+.behind {
+  position: absolute;
+  inset: 0;
+  border-radius: $shape-lg;
+  background: var(--app-card);
+  border: 1px solid var(--mat-sys-outline-variant);
+}
+
+.behind-far {
+  transform: translate(12px, 12px);
+}
+
+.behind-near {
+  transform: translate(6px, 6px);
+}
+
 app-flash-card {
-  flex: 1;
+  position: relative;
   transition:
     opacity 0.1s ease,
     transform 0.1s ease;
-  opacity: 1;
-  transform: scale(1) translateY(0);
 
   &.card-changing {
     opacity: 0;
@@ -29,16 +58,12 @@ app-flash-card {
   }
 }
 
-.mobile-navigation {
+.mobile-pager {
   display: none;
-}
 
-@media (max-width: $breakpoint-sm) {
-  .desktop-navigation {
-    display: none;
-  }
-
-  .mobile-navigation {
-    display: inline-flex;
+  @include respond-below("sm") {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 28px;
   }
 }

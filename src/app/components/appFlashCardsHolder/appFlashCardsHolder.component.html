@@ -1,52 +1,45 @@
-<div class="flash-cards-holder">
+<div class="stage">
   <button
     matFab
-    extended
-    class="btn btn-navigation desktop-navigation"
-    [disabled]="currentIndex() === 0"
-    (click)="previousCard()"
-  >
-    <mat-icon>chevron_left</mat-icon>
-    Previous
-  </button>
-
-  <button
-    matFab
-    class="btn btn-navigation mobile-navigation"
+    class="pager-fab"
     aria-label="Previous card"
     [disabled]="currentIndex() === 0"
     (click)="previousCard()"
   >
-    <mat-icon>chevron_left</mat-icon>
+    <mat-icon>arrow_back</mat-icon>
   </button>
 
   @if (currentCard(); as card) {
-    <app-flash-card
-      [class.card-changing]="isAnimating()"
-      [cardId]="card.id"
-      [question]="card.question"
-      [answer]="card.answer"
-    />
+    <div class="card-wrap" [attr.data-topic]="card.category ?? 'all'">
+      <!-- The stacked edges behind the card thin out as you near the end of the deck. -->
+      @if (cardsLeft() >= 2) {
+        <div class="behind behind-far" aria-hidden="true"></div>
+      }
+      @if (cardsLeft() >= 1) {
+        <div class="behind behind-near" aria-hidden="true"></div>
+      }
+      <app-flash-card [class.card-changing]="isAnimating()" [card]="card" />
+    </div>
   }
 
   <button
     matFab
-    extended
-    class="btn btn-navigation desktop-navigation"
-    [disabled]="currentIndex() === cards().length - 1"
-    (click)="nextCard()"
-  >
-    <mat-icon>chevron_right</mat-icon>
-    Next
-  </button>
-
-  <button
-    matFab
-    class="btn btn-navigation mobile-navigation"
+    class="pager-fab"
     aria-label="Next card"
     [disabled]="currentIndex() === cards().length - 1"
     (click)="nextCard()"
   >
-    <mat-icon>chevron_right</mat-icon>
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>
+
+<div class="mobile-pager">
+  <button matButton="tonal" [disabled]="currentIndex() === 0" (click)="previousCard()">
+    <mat-icon aria-hidden="true">arrow_back</mat-icon>
+    Previous
+  </button>
+  <button matButton="tonal" [disabled]="currentIndex() === cards().length - 1" (click)="nextCard()">
+    Next
+    <mat-icon iconPositionEnd aria-hidden="true">arrow_forward</mat-icon>
   </button>
 </div>

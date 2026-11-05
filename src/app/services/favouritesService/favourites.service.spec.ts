@@ -1,6 +1,6 @@
 import { TestBed } from "@angular/core/testing";
 import { FavouritesService } from "./favourites.service";
-import { Flashcard } from "../models/flashcard.model";
+import { Flashcard } from "../../models/flashcard.model";
 
 const STORAGE_KEY = "flashcard_favourites";
 

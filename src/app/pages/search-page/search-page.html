@@ -1,36 +1,41 @@
-<mat-card appearance="outlined" class="card search-card">
-  <mat-card-header>
-    <mat-card-title>Search for Flashcards</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-form-field>
-      <mat-label>Search</mat-label>
-      <input
-        matInput
-        type="text"
-        placeholder="Search flashcards..."
-        [(ngModel)]="searchQuery"
-        name="searchQuery"
-      />
-    </mat-form-field>
-  </mat-card-content>
-</mat-card>
+<div class="narrow-page">
+  <header class="page-heading">
+    <h1>Search</h1>
+    <p>Looks through questions, answers and topics.</p>
+  </header>
 
-@if (hasQuery()) {
-  <section class="search-results" aria-live="polite">
-    <p>{{ results().length }} result{{ results().length === 1 ? "" : "s" }} found</p>
+  <mat-form-field appearance="outline" class="search-field" subscriptSizing="dynamic">
+    <mat-icon matPrefix aria-hidden="true">search</mat-icon>
+    <mat-label>Search cards</mat-label>
+    <input
+      matInput
+      type="search"
+      placeholder="Try “closure” or “computed”"
+      autocomplete="off"
+      [(ngModel)]="searchQuery"
+      name="searchQuery"
+    />
+  </mat-form-field>
 
-    @if (results().length) {
-      @for (card of results(); track card.id) {
-        <app-flash-card
-          [cardId]="card.id"
-          [question]="card.question"
-          [answer]="card.answer"
-          class="skinny"
-        />
-      }
+  <section class="results" aria-live="polite">
+    @if (!hasQuery()) {
+      <p class="result-count">Type a word to search all {{ cardCount }} cards.</p>
+    } @else if (results().length) {
+      <p class="result-count">
+        {{ results().length }} {{ results().length === 1 ? "card matches" : "cards match" }} “{{
+          searchQuery().trim()
+        }}”
+      </p>
+      <ul class="card-list">
+        @for (card of results(); track card.id) {
+          <li><app-card-row [card]="card" /></li>
+        }
+      </ul>
     } @else {
-      <p>No flash cards match “{{ searchQuery() }}”.</p>
+      <p class="result-count">
+        No cards match “{{ searchQuery().trim() }}”. Try a shorter word, like “sign” instead of
+        “signals”.
+      </p>
     }
   </section>
-}
+</div>

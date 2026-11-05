@@ -2,17 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>JavascriptFlashCards</title>
+    <title>Flash Cards</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Revise JavaScript, TypeScript and Angular one flash card at a time."
+    />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..900,0..1,0..1,0..1&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0..1,0&display=block"
+      rel="stylesheet"
+    />
+    <script>
+      // Applies the saved theme before Angular starts, to avoid a flash of the wrong colours.
+      // The key must match THEME_STORAGE_KEY in src/app/models/theme.model.ts.
+      try {
+        var mode = localStorage.getItem("flashcard_theme");
+        if (mode === "light" || mode === "dark") {
+          document.documentElement.setAttribute("data-theme", mode);
+        }
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <app-root></app-root>

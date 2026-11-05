@@ -1,13 +1,21 @@
-<section class="topic-page" aria-labelledby="topic-title">
-  <header>
-    <p class="eyebrow">Study deck</p>
-    <h1 id="topic-title">{{ title }}</h1>
-    <p>{{ cards.length }} {{ cards.length === 1 ? "card" : "cards" }} in this topic</p>
-  </header>
+<section class="study-page" aria-labelledby="study-title">
+  <h1 id="study-title" class="visually-hidden">Study: {{ title }}</h1>
+
+  <nav class="deck-switch" aria-label="Choose a deck">
+    @for (link of deckLinks; track link.topic) {
+      <a
+        [routerLink]="link.path"
+        [attr.data-topic]="link.topic"
+        [attr.aria-current]="link.topic === category ? 'page' : null"
+      >
+        {{ link.label }} <span class="count">{{ link.count }}</span>
+      </a>
+    }
+  </nav>
 
   @if (cards.length) {
     <app-flash-cards-holder [deck]="category" />
   } @else {
-    <p class="empty-state">No cards are available for this topic yet.</p>
+    <p class="empty-state">There are no cards in this deck yet. Pick another deck above.</p>
   }
 </section>

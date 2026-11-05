@@ -1,1 +1,26 @@
 @use "styles/branding" as *;
+
+.empty {
+  padding: 56px 24px;
+  border: 1px dashed var(--mat-sys-outline);
+  border-radius: $shape-lg;
+  text-align: center;
+
+  mat-icon {
+    width: 40px;
+    height: 40px;
+    color: var(--mat-sys-on-surface-variant);
+    font-size: 40px;
+  }
+
+  h2 {
+    margin-top: 12px;
+    font-size: 1.25rem;
+  }
+
+  p {
+    max-width: 30rem;
+    margin: 6px auto 20px;
+    color: var(--mat-sys-on-surface-variant);
+  }
+}

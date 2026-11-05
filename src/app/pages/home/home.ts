@@ -1,18 +1,31 @@
-import { Component, inject } from "@angular/core";
-import { MatCardModule } from "@angular/material/card";
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { RouterLink } from "@angular/router";
-import { CardsService } from "../../services/cards.service";
+import { FlashCard } from "../../components/appFlashCard/appFlashCard.component";
+import { TOPICS } from "../../models/topics.model";
+import { CardsService } from "../../services/cardsService/cards.service";
+
+// The card shown in the hero for visitors to try. "What is a closure?"
+const SAMPLE_CARD_ID = 25;
 
 @Component({
   selector: "app-home",
-  imports: [MatCardModule, MatButtonModule, MatIconModule, RouterLink],
+  imports: [MatButtonModule, MatIconModule, RouterLink, FlashCard],
   templateUrl: "./home.html",
   styleUrl: "./home.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Home {
   private readonly cardsService = inject(CardsService);
 
   readonly cardCount = this.cardsService.getAll().length;
+  readonly sampleCard = this.cardsService.getById(SAMPLE_CARD_ID) ?? this.cardsService.getAll()[0];
+
+  readonly topicCounts = TOPICS.map((topic) => ({
+    topic,
+    count: this.cardsService.getDeckCards(topic).length,
+  }));
+
+  readonly upcomingTopics = ["Vue.js", "Testing", "CSS", "Node.js", "Nuxt", "Python"];
 }

@@ -1,12 +1,11 @@
 <button
   matIconButton
   type="button"
+  class="favourite-button"
+  [class.is-favourite]="isFavourite()"
   [attr.aria-label]="isFavourite() ? 'Remove from favourites' : 'Add to favourites'"
+  [attr.aria-pressed]="isFavourite()"
   (click)="toggleFavourite()"
 >
-  @if (isFavourite()) {
-    <mat-icon aria-label="Favourite" fontIcon="favorite" />
-  } @else {
-    <mat-icon aria-label="Not favourite" fontIcon="favorite_border" />
-  }
+  <mat-icon aria-hidden="true" [class.is-filled]="isFavourite()">favorite</mat-icon>
 </button>

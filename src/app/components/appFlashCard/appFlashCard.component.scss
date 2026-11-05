@@ -1,87 +1,107 @@
 @use "styles/branding" as *;
 
-.flash-card {
-  mat-card-header {
-    justify-content: center;
-    display: flex;
+:host {
+  display: block;
+  perspective: 1600px;
+}
+
+// Both faces sit in the same grid cell, so the card is as tall as its longest side.
+.flash {
+  position: relative;
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 520ms cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  &.is-flipped {
+    transform: rotateY(180deg);
   }
 
-  mat-card-header,
-  mat-card-actions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  mat-card-content {
-    text-align: center;
-    display: grid;
-    grid-template-rows: 0fr;
-    opacity: 0;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    transition:
-      grid-template-rows 0.3s ease,
-      opacity 0.3s ease,
-      padding 0.3s ease;
-    overflow: hidden;
-
-    &.expanded {
-      grid-template-rows: 1fr;
-      opacity: 1;
-      padding-top: $spacing-lg !important;
-      padding-bottom: $spacing-md !important;
-    }
-
-    p {
-      min-height: 0;
-      overflow: hidden;
-      margin: 0;
-    }
-  }
-
-  app-favourite-button {
-    position: absolute;
-    top: $spacing-sm;
-    right: $spacing-sm;
-  }
-
-  mat-card-header {
-    padding: $spacing-lg;
-  }
-
-  mat-card-title {
-    text-align: center;
-    line-height: 1.2;
-  }
-
-  mat-card-actions {
-    gap: 1rem;
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 }
 
-:host(.skinny) .flash-card {
-  padding: $spacing-sm;
+.face {
+  grid-area: 1 / 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+  padding: 24px 28px 24px 36px;
+  border-radius: $shape-lg;
+  background: var(--app-card);
+  box-shadow: var(--app-card-shadow), var(--app-card-shadow-raised);
+  backface-visibility: hidden;
+  overflow: hidden;
 
-  mat-card-header,
-  mat-card-actions {
-    justify-content: flex-start;
-    display: flex;
-    padding: $spacing-sm;
+  // The topic-coloured spine down the left edge.
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: var(--topic-hue);
   }
 
-  mat-card-content {
-    justify-content: flex-start;
-    padding-top: $spacing-sm;
+  @include respond-below("sm") {
+    min-height: 400px;
+    padding: 20px 20px 20px 28px;
   }
+}
 
-  @media screen and (max-width: $breakpoint-md) {
-    mat-card-title {
-      text-align: left;
-      padding-right: 1.5rem;
-    }
-    mat-card-actions {
-      flex-wrap: wrap;
-    }
+.back {
+  transform: rotateY(180deg);
+}
+
+.face-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 40px;
+
+  .favourite {
+    margin-left: auto;
+    margin-right: -8px;
   }
+}
+
+.question {
+  margin: auto 0;
+  padding: 24px 0;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 750;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+.question-small {
+  margin-top: 20px;
+  color: var(--mat-sys-on-surface-variant);
+  font-weight: 600;
+}
+
+.answer {
+  max-width: 34ch;
+  margin: 12px 0 auto;
+  padding-bottom: 24px;
+  font-size: clamp(1.25rem, 2.6vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.face-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.flip-button {
+  height: 56px;
+  padding: 0 28px;
+  border-radius: $shape-lg;
+  font-size: 1rem;
 }

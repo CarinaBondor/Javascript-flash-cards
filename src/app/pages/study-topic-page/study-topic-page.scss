@@ -1,29 +1,68 @@
 @use "styles/branding" as *;
 
-.topic-page {
-  max-width: $site-content-width;
-  margin: 0 auto;
+// Styled like a Material 3 segmented button, but each segment is a link to its deck.
+.deck-switch {
+  display: inline-flex;
+  margin-bottom: 40px;
+  border: 1px solid var(--mat-sys-outline);
+  border-radius: $shape-full;
+  overflow: hidden;
 
-  header {
-    margin: 0 $spacing-md;
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 40px;
+    padding: 0 16px;
+    border-left: 1px solid var(--mat-sys-outline);
+    color: var(--mat-sys-on-surface);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:first-child {
+      border-left: 0;
+    }
+
+    &:hover {
+      background: var(--app-card-high);
+    }
+
+    &[aria-current="page"] {
+      background: var(--topic-soft);
+
+      &::before {
+        content: "check";
+        font-family: "Material Symbols Rounded";
+        font-size: 18px;
+        font-weight: 400;
+      }
+    }
   }
 
-  h1 {
-    margin: 0 0 $spacing-sm;
-    font-size: 2rem;
+  .count {
+    color: var(--mat-sys-on-surface-variant);
+    font-weight: 500;
   }
 
-  header p:last-child,
-  .empty-state {
-    color: #505a65;
-    line-height: 1.5;
+  @include respond-below("sm") {
+    display: flex;
+    margin-bottom: 28px;
+
+    a {
+      flex: 1;
+      justify-content: center;
+      padding: 0 6px;
+      font-size: 0.8125rem;
+    }
+
+    .count,
+    a[aria-current="page"]::before {
+      display: none;
+    }
   }
 }
 
-.eyebrow {
-  margin-bottom: $spacing-sm;
-  color: $color-primary-hover;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
+.empty-state {
+  color: var(--mat-sys-on-surface-variant);
 }

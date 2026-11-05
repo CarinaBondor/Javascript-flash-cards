@@ -1,0 +1,65 @@
+// =============================================================================
+// Topic colours
+// Each topic has a strong hue (spines, counts) and a soft tint (chips, panels).
+// Set data-topic="angular|javascript|typescript|all" on any element to use them
+// through var(--topic-hue) and var(--topic-soft).
+// =============================================================================
+:root {
+  --topic-angular: light-dark(#c3002f, #ff6b81);
+  --topic-angular-soft: light-dark(#fde3e7, #4a1d27);
+  --topic-javascript: light-dark(#d9a600, #f2c94c);
+  --topic-javascript-soft: light-dark(#fff1c2, #43381a);
+  --topic-typescript: light-dark(#2f74c0, #7fb3ee);
+  --topic-typescript-soft: light-dark(#dceafb, #1d3350);
+  --topic-all: var(--mat-sys-primary);
+  --topic-all-soft: var(--mat-sys-primary-container);
+}
+
+[data-topic="angular"] {
+  --topic-hue: var(--topic-angular);
+  --topic-soft: var(--topic-angular-soft);
+}
+
+[data-topic="javascript"] {
+  --topic-hue: var(--topic-javascript);
+  --topic-soft: var(--topic-javascript-soft);
+}
+
+[data-topic="typescript"] {
+  --topic-hue: var(--topic-typescript);
+  --topic-soft: var(--topic-typescript-soft);
+}
+
+[data-topic="all"] {
+  --topic-hue: var(--topic-all);
+  --topic-soft: var(--topic-all-soft);
+}
+
+// A small tinted label with a colour swatch, e.g. "Angular".
+.topic-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 8px;
+  background: var(--topic-soft);
+  color: var(--mat-sys-on-surface);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  white-space: nowrap;
+
+  &::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--topic-hue);
+  }
+}
+
+.level {
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}

@@ -1,12 +1,11 @@
-import { Component } from "@angular/core";
-import { MatButtonModule } from "@angular/material/button";
-import { MatToolbarModule } from "@angular/material/toolbar";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { RouterLink } from "@angular/router";
 
 @Component({
   selector: "app-footer",
-  imports: [MatButtonModule, MatToolbarModule, RouterLink],
+  imports: [RouterLink],
   templateUrl: "./footer.html",
   styleUrl: "./footer.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Footer {}

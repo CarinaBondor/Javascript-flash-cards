@@ -1,13 +1,13 @@
-@use "styles/branding" as *;
+.search-field {
+  width: 100%;
 
-.search-card {
-  margin: 0 auto;
-
-  mat-card-content {
-    padding-top: $spacing-md;
+  mat-icon {
+    margin: 0 4px 0 12px;
   }
+}
 
-  mat-form-field {
-    width: 100%;
-  }
+.result-count {
+  margin: 16px 4px 12px;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 0.9375rem;
 }
