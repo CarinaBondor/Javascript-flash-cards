@@ -3,8 +3,8 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { RouterLink } from "@angular/router";
 import { CardRow } from "../../components/appCardRow/appCardRow.component";
-import { CardsService } from "../../services/cards.service";
-import { FavouritesService } from "../../services/favourites.service";
+import { CardsService } from "../../services/cardsService/cards.service";
+import { FavouritesService } from "../../services/favouritesService/favourites.service";
 
 @Component({
   selector: "app-favourites-page",

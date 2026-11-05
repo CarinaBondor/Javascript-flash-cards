@@ -1,7 +1,16 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, inject } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { RouterLink, RouterLinkActive } from "@angular/router";
+import { ThemeService } from "../../services/themeService/theme.service";
+import { ThemeMode } from "../../models/theme.model";
+import { MatMenuModule } from "@angular/material/menu";
+
+interface ThemeOption {
+  mode: ThemeMode;
+  label: string;
+  icon: string;
+}
 
 interface NavItem {
   label: string;
@@ -12,12 +21,24 @@ interface NavItem {
 
 @Component({
   selector: "app-menu",
-  imports: [RouterLink, RouterLinkActive, MatButtonModule, MatIconModule],
+  imports: [RouterLink, RouterLinkActive, MatButtonModule, MatIconModule, MatMenuModule],
   templateUrl: "./menu.component.html",
   styleUrl: "./menu.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Menu {
+  protected readonly theme = inject(ThemeService);
+
+  protected readonly themeOptions: ThemeOption[] = [
+    { mode: "system", label: "Match my device", icon: "brightness_auto" },
+    { mode: "light", label: "Light", icon: "light_mode" },
+    { mode: "dark", label: "Dark", icon: "dark_mode" },
+  ];
+
+  // Recalculated only when theme.mode() changes.
+  protected readonly currentTheme = computed(
+    () => this.themeOptions.find((option) => option.mode === this.theme.mode())!,
+  );
   // One list drives both the top bar (wide screens) and the bottom bar (phones).
   protected readonly items: NavItem[] = [
     { label: "Home", path: "/", icon: "home", exact: true },

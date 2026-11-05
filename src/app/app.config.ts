@@ -6,6 +6,7 @@ import {
 } from "@angular/core";
 import { MatIconRegistry } from "@angular/material/icon";
 import { provideRouter, withInMemoryScrolling } from "@angular/router";
+import { ThemeService } from "./services/themeService/theme.service";
 
 import { routes } from "./app.routes";
 
@@ -16,6 +17,7 @@ export const appConfig: ApplicationConfig = {
     // Make <mat-icon> use the Material Symbols Rounded font loaded in index.html.
     provideAppInitializer(() => {
       inject(MatIconRegistry).setDefaultFontSetClass("material-symbols-rounded");
+      inject(ThemeService);
     }),
   ],
 };

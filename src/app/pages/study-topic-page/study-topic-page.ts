@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { FlashCardsHolder } from "../../components/appFlashCardsHolder/appFlashCardsHolder.component";
 import { Flashcard } from "../../models/flashcard.model";
-import { DeckTopic, topicName } from "../../models/topics";
-import { CardsService } from "../../services/cards.service";
+import { DeckTopic, topicName } from "../../models/topics.model";
+import { CardsService } from "../../services/cardsService/cards.service";
 
 interface DeckLink {
   topic: DeckTopic;

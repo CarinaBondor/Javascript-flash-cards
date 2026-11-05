@@ -4,9 +4,9 @@ import { Location, TitleCasePipe } from "@angular/common";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { ActivatedRoute, RouterLink } from "@angular/router";
-import { CardsService } from "../../services/cards.service";
+import { CardsService } from "../../services/cardsService/cards.service";
 import { FavouriteButton } from "../../components/appFavouriteButton/appFavouriteButton";
-import { topicName } from "../../models/topics";
+import { topicName } from "../../models/topics.model";
 
 @Component({
   selector: "app-card-detail-page",

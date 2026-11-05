@@ -1,5 +1,5 @@
 import { Injectable, signal, computed } from "@angular/core";
-import { Flashcard } from "../models/flashcard.model";
+import { Flashcard } from "../../models/flashcard.model";
 
 @Injectable({
   providedIn: "root",

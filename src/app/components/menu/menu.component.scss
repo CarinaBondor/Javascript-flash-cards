@@ -135,4 +135,17 @@
         "opsz" 24;
     }
   }
+
+  .theme-button {
+    margin-left: 4px;
+
+    @include respond-below("sm") {
+      margin-left: auto;
+    }
+  }
+
+  .selected {
+    margin-left: auto;
+    color: var(--mat-sys-primary);
+  }
 }

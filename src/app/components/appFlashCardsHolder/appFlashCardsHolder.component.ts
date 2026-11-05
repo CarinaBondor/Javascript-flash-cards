@@ -11,7 +11,7 @@ import {
 import { FlashCard } from "../appFlashCard/appFlashCard.component";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
-import { CardsService, DeckKey } from "../../services/cards.service";
+import { CardsService, DeckKey } from "../../services/cardsService/cards.service";
 
 @Component({
   selector: "app-flash-cards-holder",

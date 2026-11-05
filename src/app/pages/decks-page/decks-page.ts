@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { Flashcard } from "../../models/flashcard.model";
-import { DeckTopic, topicName } from "../../models/topics";
-import { CardsService } from "../../services/cards.service";
+import { DeckTopic, topicName } from "../../models/topics.model";
+import { CardsService } from "../../services/cardsService/cards.service";
 
 interface DeckSummary {
   topic: DeckTopic;

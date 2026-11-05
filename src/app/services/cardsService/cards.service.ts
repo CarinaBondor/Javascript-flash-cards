@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { flashcardsData } from "../data/cards";
-import { Flashcard } from "../models/flashcard.model";
-import { shuffled } from "../utils/shuffle";
+import { flashcardsData } from "../../data/cards";
+import { Flashcard } from "../../models/flashcard.model";
+import { shuffled } from "../../utils/shuffle";
 
 // 'all' is the full /study deck; any other key is a card category.
 export type DeckKey = "all" | string;

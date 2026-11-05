@@ -3,8 +3,8 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { RouterLink } from "@angular/router";
 import { FlashCard } from "../../components/appFlashCard/appFlashCard.component";
-import { TOPICS } from "../../models/topics";
-import { CardsService } from "../../services/cards.service";
+import { TOPICS } from "../../models/topics.model";
+import { CardsService } from "../../services/cardsService/cards.service";
 
 // The card shown in the hero for visitors to try. "What is a closure?"
 const SAMPLE_CARD_ID = 25;
@@ -27,5 +27,5 @@ export class Home {
     count: this.cardsService.getDeckCards(topic).length,
   }));
 
-  readonly upcomingTopics = ["RxJS", "Testing", "CSS", "Node.js"];
+  readonly upcomingTopics = ["Vue.js", "Testing", "CSS", "Node.js", "Nuxt", "Python"];
 }

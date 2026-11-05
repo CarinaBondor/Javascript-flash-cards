@@ -16,7 +16,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { RouterLink } from "@angular/router";
 import { FavouriteButton } from "../appFavouriteButton/appFavouriteButton";
 import { Flashcard } from "../../models/flashcard.model";
-import { topicName } from "../../models/topics";
+import { topicName } from "../../models/topics.model";
 
 @Component({
   selector: "app-flash-card",

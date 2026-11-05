@@ -18,6 +18,32 @@
       </a>
     }
   </nav>
+
+  <button
+    matIconButton
+    class="theme-button"
+    [matMenuTriggerFor]="themeMenu"
+    [attr.aria-label]="'Colour theme: ' + currentTheme().label"
+  >
+    <mat-icon aria-hidden="true">{{ currentTheme().icon }}</mat-icon>
+  </button>
+
+  <mat-menu #themeMenu="matMenu" xPosition="before">
+    @for (option of themeOptions; track option.mode) {
+      <button
+        mat-menu-item
+        role="menuitemradio"
+        [attr.aria-checked]="option.mode === theme.mode()"
+        (click)="theme.setMode(option.mode)"
+      >
+        <mat-icon aria-hidden="true">{{ option.icon }}</mat-icon>
+        <span>{{ option.label }}</span>
+        @if (option.mode === theme.mode()) {
+          <mat-icon class="selected" aria-hidden="true">check</mat-icon>
+        }
+      </button>
+    }
+  </mat-menu>
 </header>
 
 <nav class="bottom-nav" aria-label="Primary">
