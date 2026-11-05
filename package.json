@@ -9,7 +9,15 @@
     "test": "ng test",
     "prettify": "npx prettier --check .",
     "verify": "npm test && npm run build",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,html}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{scss,json,md}": "prettier --write"
   },
   "private": true,
   "packageManager": "npm@11.6.1",
@@ -29,10 +37,14 @@
     "@angular/build": "^21.2.9",
     "@angular/cli": "^21.2.9",
     "@angular/compiler-cli": "^21.2.0",
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
     "@eslint/js": "^10.0.1",
     "angular-eslint": "21.4.0",
     "eslint": "^10.3.0",
+    "husky": "^9.1.7",
     "jsdom": "^28.0.0",
+    "lint-staged": "^17.6.0",
     "prettier": "^3.8.1",
     "typescript": "~5.9.2",
     "typescript-eslint": "8.59.2",
