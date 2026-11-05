@@ -1,0 +1,9 @@
+<a class="row-main" [routerLink]="['/question', card().id]">
+  <span class="row-question">{{ card().question }}</span>
+  <span class="row-answer">{{ card().answer }}</span>
+  <span class="row-meta">
+    <span class="topic-chip">{{ topicLabel() }}</span>
+    <span class="level">{{ card().level | titlecase }}</span>
+  </span>
+</a>
+<app-favourite-button [cardId]="card().id" />

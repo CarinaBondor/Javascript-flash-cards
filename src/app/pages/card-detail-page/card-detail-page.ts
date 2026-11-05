@@ -1,19 +1,19 @@
-import { Component, computed, inject } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, inject } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { Location } from "@angular/common";
+import { Location, TitleCasePipe } from "@angular/common";
 import { MatButtonModule } from "@angular/material/button";
-import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { CardsService } from "../../services/cards.service";
 import { FavouriteButton } from "../../components/appFavouriteButton/appFavouriteButton";
+import { topicName } from "../../models/topics";
 
 @Component({
   selector: "app-card-detail-page",
-  standalone: true,
-  imports: [MatButtonModule, MatCardModule, MatIconModule, RouterLink, FavouriteButton],
+  imports: [MatButtonModule, MatIconModule, RouterLink, TitleCasePipe, FavouriteButton],
   templateUrl: "./card-detail-page.html",
   styleUrl: "./card-detail-page.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardDetailPage {
   private readonly route = inject(ActivatedRoute);
@@ -27,6 +27,12 @@ export class CardDetailPage {
     const id = Number(this.routeParams().get("id"));
     return this.cardsService.getById(id);
   });
+
+  readonly topic = computed(() => this.card()?.category ?? "all");
+  readonly topicLabel = computed(() => topicName(this.topic()));
+  readonly studyPath = computed(() =>
+    this.topic() === "all" ? "/study" : `/study/${this.topic()}`,
+  );
 
   goBack(): void {
     this.location.back();

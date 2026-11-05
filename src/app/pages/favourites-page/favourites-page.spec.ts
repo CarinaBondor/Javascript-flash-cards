@@ -11,7 +11,7 @@ describe("FavouritesPage", () => {
 
     await TestBed.configureTestingModule({
       imports: [FavouritesPage],
-      // Each rendered flash card has a "Read full card" routerLink, which needs the router.
+      // Each card row links to the full card, and the empty state links to Study.
       providers: [provideRouter([])],
     }).compileComponents();
   });
@@ -26,19 +26,19 @@ describe("FavouritesPage", () => {
     return fixture.nativeElement as HTMLElement;
   }
 
-  it("shows an empty message when nothing is favourited", async () => {
+  it("shows an empty state when nothing is favourited", async () => {
     const page = await createPage();
 
-    expect(page.textContent).toContain("You have no favourited cards.");
-    expect(page.querySelectorAll("app-flash-card").length).toBe(0);
+    expect(page.textContent).toContain("No favourites yet");
+    expect(page.querySelectorAll("app-card-row").length).toBe(0);
   });
 
-  it("renders a card for each saved favourite", async () => {
+  it("lists a row for each saved favourite", async () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify([1, 2]));
 
     const page = await createPage();
 
-    expect(page.textContent).toContain("Total favourites: 2");
-    expect(page.querySelectorAll("app-flash-card").length).toBe(2);
+    expect(page.textContent).toContain("2 cards saved");
+    expect(page.querySelectorAll("app-card-row").length).toBe(2);
   });
 });

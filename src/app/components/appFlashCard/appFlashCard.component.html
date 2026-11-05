@@ -1,22 +1,40 @@
-<mat-card appearance="outlined" class="flash-card">
-  <mat-card-header>
-    <mat-card-title>
-      <h2>{{ question() }}</h2>
-    </mat-card-title>
-    <app-favourite-button [cardId]="cardId()" />
-  </mat-card-header>
+<div class="flash" [class.is-flipped]="showAnswer()">
+  <div class="face front" [attr.inert]="showAnswer() ? '' : null">
+    <ng-container *ngTemplateOutlet="faceHead" />
+    <h2 class="question">{{ card().question }}</h2>
+    <div class="face-actions">
+      <button #showAnswerButton matButton="filled" class="flip-button" (click)="toggleAnswer()">
+        <mat-icon aria-hidden="true">flip</mat-icon>
+        Show answer
+      </button>
+    </div>
+  </div>
 
-  <mat-card-actions>
-    <button matFab extended (click)="toggleAnswer()">
-      {{ showAnswer() ? "Hide answer" : "Show answer" }}
-    </button>
-    <a matButton [routerLink]="['/question', cardId()]">
-      <mat-icon>open_in_new</mat-icon>
-      Read full card
-    </a>
-  </mat-card-actions>
+  <div class="face back" [attr.inert]="showAnswer() ? null : ''" aria-live="polite">
+    <ng-container *ngTemplateOutlet="faceHead" />
+    <p class="question-small">{{ card().question }}</p>
+    <p class="answer">{{ card().answer }}</p>
+    <div class="face-actions">
+      <button #showQuestionButton matButton="tonal" class="flip-button" (click)="toggleAnswer()">
+        <mat-icon aria-hidden="true">flip</mat-icon>
+        Show question
+      </button>
+      @if (showExtras()) {
+        <a matButton [routerLink]="['/question', card().id]">
+          <mat-icon aria-hidden="true">article</mat-icon>
+          Read the full card
+        </a>
+      }
+    </div>
+  </div>
+</div>
 
-  <mat-card-content [class.expanded]="showAnswer()">
-    <p>{{ answer() }}</p>
-  </mat-card-content>
-</mat-card>
+<ng-template #faceHead>
+  <div class="face-head">
+    <span class="topic-chip">{{ topicLabel() }}</span>
+    <span class="level">{{ card().level | titlecase }}</span>
+    @if (showExtras()) {
+      <app-favourite-button class="favourite" [cardId]="card().id" />
+    }
+  </div>
+</ng-template>

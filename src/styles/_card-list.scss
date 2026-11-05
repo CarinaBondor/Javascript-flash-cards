@@ -1,0 +1,19 @@
+// A bordered list of <app-card-row> items, used by Search and Favourites.
+.card-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 16px;
+  background: var(--app-card);
+  overflow: hidden;
+
+  > li + li {
+    border-top: 1px solid var(--mat-sys-outline-variant);
+  }
+}
+
+.narrow-page {
+  max-width: 712px;
+  margin: 0 auto;
+}

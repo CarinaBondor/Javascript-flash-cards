@@ -1,79 +1,38 @@
-<nav class="wrapper" aria-label="Primary navigation">
-  <mat-toolbar class="desktop-toolbar">
-    <ul>
-      <li><a mat-button routerLink="/" routerLinkActive="active">Home</a></li>
-      <li><a mat-button routerLink="/study" routerLinkActive="active">Study</a></li>
-      <li><a mat-button routerLink="/about" routerLinkActive="active">About</a></li>
-      <li><a mat-button routerLink="/search" routerLinkActive="active">Search</a></li>
-      <li><a mat-button routerLink="/favourites" routerLinkActive="active">Favourites</a></li>
-    </ul>
-  </mat-toolbar>
+<header class="top-bar">
+  <a class="brand" routerLink="/">
+    <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+    Flash Cards
+  </a>
 
-  <mat-sidenav-container class="mobile-navigation" [class.sidenav-open]="sidenavOpened()">
-    <mat-sidenav #sidenav mode="over" class="mobile-sidenav">
-      <button
-        matIconButton
-        aria-label="Close menu"
-        (click)="sidenav.close(); sidenavOpened.set(false)"
+  <nav class="top-nav" aria-label="Primary">
+    @for (item of items; track item.path) {
+      <a
+        matButton
+        class="nav-link"
+        [routerLink]="item.path"
+        routerLinkActive="is-active"
+        ariaCurrentWhenActive="page"
+        [routerLinkActiveOptions]="{ exact: item.exact }"
       >
-        <mat-icon>close</mat-icon>
-      </button>
+        {{ item.label }}
+      </a>
+    }
+  </nav>
+</header>
 
-      <div class="sidenav-links">
-        <a
-          mat-button
-          routerLink="/"
-          routerLinkActive="active"
-          (click)="sidenav.close(); sidenavOpened.set(false)"
-        >
-          Home
-        </a>
-        <a
-          mat-button
-          routerLink="/study"
-          routerLinkActive="active"
-          (click)="sidenav.close(); sidenavOpened.set(false)"
-        >
-          Study
-        </a>
-        <a
-          mat-button
-          routerLink="/about"
-          routerLinkActive="active"
-          (click)="sidenav.close(); sidenavOpened.set(false)"
-        >
-          About
-        </a>
-        <a
-          mat-button
-          routerLink="/search"
-          routerLinkActive="active"
-          (click)="sidenav.close(); sidenavOpened.set(false)"
-        >
-          Search
-        </a>
-        <a
-          mat-button
-          routerLink="/favourites"
-          routerLinkActive="active"
-          (click)="sidenav.close(); sidenavOpened.set(false)"
-        >
-          Favourites
-        </a>
-      </div>
-    </mat-sidenav>
-
-    <mat-sidenav-content>
-      <mat-toolbar class="mobile-toolbar">
-        <button
-          matIconButton
-          aria-label="Open menu"
-          (click)="sidenav.open(); sidenavOpened.set(true)"
-        >
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span>JavaScript Flash Cards</span>
-      </mat-toolbar>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+<nav class="bottom-nav" aria-label="Primary">
+  @for (item of items; track item.path) {
+    <a
+      class="bottom-link"
+      [routerLink]="item.path"
+      routerLinkActive="is-active"
+      ariaCurrentWhenActive="page"
+      [routerLinkActiveOptions]="{ exact: item.exact }"
+    >
+      <span class="pill"
+        ><mat-icon aria-hidden="true">{{ item.icon }}</mat-icon></span
+      >
+      {{ item.label }}
+    </a>
+  }
 </nav>

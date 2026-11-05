@@ -1,23 +1,29 @@
-import { Component, signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
-import { MatToolbarModule } from "@angular/material/toolbar";
 import { RouterLink, RouterLinkActive } from "@angular/router";
-import { MatSidenavModule } from "@angular/material/sidenav";
+
+interface NavItem {
+  label: string;
+  path: string;
+  icon: string;
+  exact: boolean;
+}
 
 @Component({
   selector: "app-menu",
-  imports: [
-    RouterLink,
-    RouterLinkActive,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatSidenavModule,
-  ],
+  imports: [RouterLink, RouterLinkActive, MatButtonModule, MatIconModule],
   templateUrl: "./menu.component.html",
   styleUrl: "./menu.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Menu {
-  protected readonly sidenavOpened = signal(false);
+  // One list drives both the top bar (wide screens) and the bottom bar (phones).
+  protected readonly items: NavItem[] = [
+    { label: "Home", path: "/", icon: "home", exact: true },
+    { label: "Decks", path: "/decks", icon: "style", exact: false },
+    { label: "Study", path: "/study", icon: "school", exact: false },
+    { label: "Search", path: "/search", icon: "search", exact: false },
+    { label: "Favourites", path: "/favourites", icon: "favorite", exact: false },
+  ];
 }

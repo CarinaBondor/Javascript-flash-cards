@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   DestroyRef,
   computed,
@@ -17,6 +18,11 @@ import { CardsService, DeckKey } from "../../services/cards.service";
   imports: [FlashCard, MatButtonModule, MatIconModule],
   templateUrl: "./appFlashCardsHolder.component.html",
   styleUrl: "./appFlashCardsHolder.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    "(document:keydown.arrowright)": "onArrowKey($event, 1)",
+    "(document:keydown.arrowleft)": "onArrowKey($event, -1)",
+  },
 })
 export class FlashCardsHolder {
   private readonly cardsService = inject(CardsService);
@@ -26,6 +32,7 @@ export class FlashCardsHolder {
   // Starts at the deck's saved position, re-syncs if the deck input changes, and can still be set locally.
   readonly currentIndex = linkedSignal(() => this.cardsService.getDeckIndex(this.deck()));
   readonly currentCard = computed(() => this.cards()[this.currentIndex()]);
+  readonly cardsLeft = computed(() => this.cards().length - 1 - this.currentIndex());
   readonly isAnimating = signal(false);
 
   private animationTimer?: ReturnType<typeof setTimeout>;
@@ -43,6 +50,19 @@ export class FlashCardsHolder {
   previousCard() {
     if (this.currentIndex() > 0 && !this.isAnimating()) {
       this.triggerCardChange(this.currentIndex() - 1);
+    }
+  }
+
+  // Left and right arrow keys move through the deck, unless you're typing in a field.
+  onArrowKey(event: Event, step: 1 | -1) {
+    const target = event.target as HTMLElement | null;
+    if (target?.closest("input, textarea, select, [contenteditable]")) {
+      return;
+    }
+    if (step === 1) {
+      this.nextCard();
+    } else {
+      this.previousCard();
     }
   }
 

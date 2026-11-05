@@ -1,0 +1,26 @@
+<header class="page-heading">
+  <h1>Pick a deck</h1>
+  <p>
+    {{ cardCount }} cards on Angular, JavaScript and TypeScript. Read the question, answer it in
+    your head, then flip.
+  </p>
+</header>
+
+<ul class="decks">
+  @for (deck of decks; track deck.topic) {
+    <li>
+      <a class="deck" [routerLink]="deck.path" [attr.data-topic]="deck.topic">
+        <span class="deck-stack" aria-hidden="true">
+          <span class="sheet"></span>
+          <span class="sheet"></span>
+          <span class="sheet top">
+            <span class="deck-sample">{{ deck.sampleQuestion }}</span>
+            <span class="deck-count">{{ deck.count }}</span>
+          </span>
+        </span>
+        <span class="deck-name">{{ deck.name }}</span>
+        <span class="deck-meta">{{ deck.count }} cards: {{ deck.levels }}</span>
+      </a>
+    </li>
+  }
+</ul>

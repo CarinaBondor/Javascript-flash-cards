@@ -1,33 +1,88 @@
-<div class="home-container">
-  <mat-card appearance="outlined" class="home-card">
-    <mat-card-header>
-      <mat-card-title>JavaScript Flash Cards</mat-card-title>
-      <mat-card-subtitle
-        >Learn and revisit JavaScript & Angular concepts, one card at a time</mat-card-subtitle
+<section class="hero" aria-labelledby="home-title">
+  <div class="hero-text">
+    <h1 id="home-title">Revise JavaScript, TypeScript and Angular one card at a time</h1>
+    <p>
+      Short questions, short answers, and a longer explanation when you want one. Free, with nothing
+      to sign up for.
+    </p>
+    <div class="hero-actions">
+      <a matButton="filled" class="large-button" routerLink="/study">
+        <mat-icon aria-hidden="true">school</mat-icon>
+        Start studying
+      </a>
+      <a matButton routerLink="/decks">Browse the decks</a>
+    </div>
+  </div>
+
+  @if (sampleCard) {
+    <div class="hero-card">
+      <p class="hero-hint">Try one. Answer it in your head, then flip.</p>
+      <app-flash-card [card]="sampleCard" [showExtras]="false" />
+    </div>
+  }
+</section>
+
+<div class="ways">
+  <a class="way" routerLink="/decks">
+    <span class="way-stacks" aria-hidden="true">
+      @for (deck of topicCounts; track deck.topic) {
+        <span class="mini" [attr.data-topic]="deck.topic"
+          ><b>{{ deck.count }}</b></span
+        >
+      }
+    </span>
+    <span class="way-text">
+      <span class="way-title">Pick a topic</span>
+      <span class="way-body">Study one deck at a time: Angular, JavaScript or TypeScript.</span>
+      <span class="way-link">Browse the decks</span>
+    </span>
+  </a>
+
+  <a class="way" routerLink="/study">
+    <mat-icon class="way-icon" aria-hidden="true">shuffle</mat-icon>
+    <span class="way-text">
+      <span class="way-title">Shuffle everything</span>
+      <span class="way-body"
+        >All {{ cardCount }} cards in a random order, for a mixed revision session.</span
       >
-    </mat-card-header>
-
-    <mat-card-content>
-      <p class="lead-text">{{ cardCount }} flash cards ready to study.</p>
-
-      <div class="quick-links">
-        <a matButton="filled" routerLink="/study">
-          <mat-icon>school</mat-icon>
-          Start studying
-        </a>
-        <a matButton="tonal" routerLink="/search">
-          <mat-icon>search</mat-icon>
-          Search cards
-        </a>
-        <a matButton="tonal" routerLink="/favourites">
-          <mat-icon>favorite</mat-icon>
-          Favourites
-        </a>
-        <a matButton="tonal" routerLink="/about">
-          <mat-icon>info</mat-icon>
-          About
-        </a>
-      </div>
-    </mat-card-content>
-  </mat-card>
+      <span class="way-link">Start studying</span>
+    </span>
+  </a>
 </div>
+
+<section class="soon" aria-labelledby="soon-title">
+  <h2 id="soon-title" class="section-title">Coming soon</h2>
+
+  <article class="soon-panel quiz-preview">
+    <div class="soon-copy">
+      <h3>Quizzes</h3>
+      <p>
+        Ten multiple-choice questions built from the cards, with your score at the end. Pick a topic
+        and a difficulty before you start.
+      </p>
+    </div>
+    <div class="quiz-mock" aria-hidden="true">
+      <p class="quiz-question">What does <code>Array.prototype.map()</code> return?</p>
+      <span class="option">The original array, changed in place</span>
+      <span class="option is-right">
+        <mat-icon class="is-filled">check_circle</mat-icon>
+        A new array with each result
+      </span>
+      <span class="option">The number of items it visited</span>
+      <span class="option">Nothing</span>
+      <span class="quiz-progress">Question 3 of 10</span>
+    </div>
+  </article>
+
+  <article class="soon-panel">
+    <div class="soon-copy">
+      <h3>More topics</h3>
+      <p>New decks are being written. These are next.</p>
+    </div>
+    <ul class="upcoming">
+      @for (topic of upcomingTopics; track topic) {
+        <li><span class="ghost" aria-hidden="true"></span>{{ topic }}</li>
+      }
+    </ul>
+  </article>
+</section>

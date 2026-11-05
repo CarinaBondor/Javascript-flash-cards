@@ -1,6 +1,6 @@
-# Build plan: Quiz and Code Challenge
+# Build plan: Quiz, Code Challenge and Resume
 
-Two features, built in small milestones. Each milestone names the **Angular concept it teaches**, what "done" looks like, and hints if you get stuck. There's no finished code in here on purpose: try it first, then read the hint.
+Three features, built in small milestones. Each milestone names the **Angular concept it teaches**, what "done" looks like, and hints if you get stuck. There's no finished code in here on purpose: try it first, then read the hint.
 
 Build the **Quiz first**. It reuses your existing cards, so you can focus on Angular. The Code Challenge comes second and adds new data, forms and timers on top of what you learned.
 
@@ -252,7 +252,76 @@ You don't have to build anything here. The point is being able to answer that qu
 
 ---
 
-## Definition of done (both features)
+## Part 3: Resume where you stopped
+
+**Goal:** the home page shows a "Carry on where you stopped" panel with the last deck you studied, how far through it you were (e.g. "Card 5 of 20" and a progress bar), and a **Resume** button that takes you straight back to that card. It still works after you close the tab.
+
+This is a smaller feature. It builds on code you already have: `CardsService` already remembers each deck's position, but only in memory, so a page refresh wipes it.
+
+### Milestone 1: Find the state you already have
+
+**Concept:** reading existing code before adding new code
+
+Open `services/cards.service.ts` and answer on paper:
+
+- Where is each deck's position stored right now? What type is it?
+- Which method changes it, and who calls that method?
+- What would the service need to also know to answer "which deck did I study **last**?"
+
+**Done when:** you can say which one new piece of state you need, and whether it's a source `signal` or a `computed`.
+
+---
+
+### Milestone 2: Survive a refresh
+
+**Concept:** persisting state with `localStorage`, and when `effect()` is right
+
+Save the deck positions and the last-studied deck to `localStorage`, and load them when the service starts. You've done this before in `FavouritesService`, so compare against it.
+
+- Decide what shape to save. A `Map` can't be passed to `JSON.stringify` directly. What will you turn it into?
+- Handle bad or missing data: start from nothing rather than crashing.
+- **Careful:** the deck's _shuffle order_ isn't saved, so after a refresh "card 5" might be a different card. Decide whether to also save the order (card ids), or accept a reshuffle and only keep the number. Write down why you chose what you did.
+
+**Done when:** you study to card 5, refresh the page, open the same deck, and land on card 5.
+
+**Tests:** in `cards.service.spec.ts`, cover loading saved positions, and bad JSON in storage. Clear `localStorage` in `afterEach`. Remember why from the CI failure.
+
+---
+
+### Milestone 3: The panel on the home page
+
+**Concept:** `computed` across services, and `@if` for optional UI
+
+- Add a `computed` (in the service or the home component, you decide) that returns `{ deck, position, total }` for the last deck, or `null` if there isn't one.
+- On the home page, wrap the panel in `@if (resume(); as r)`, so new visitors never see an empty panel.
+- Use `mat-progress-bar` with `mode="determinate"` for the progress.
+- Don't show the panel if the last deck is finished. Is that a `computed` change or a template change?
+
+**Done when:** a first-time visitor sees no panel, and someone halfway through a deck sees the right deck, position and progress.
+
+---
+
+### Milestone 4: Resume goes to the exact card
+
+**Concept:** router navigation with state
+
+The **Resume** button links to the deck's route (`/study/angular`, or `/study` for "all"). Because the position now lives in the service, the deck should open on the saved card with no extra work. Check that it does.
+
+**Ask yourself:** why does putting the position in a service (instead of in the component) make this button almost free?
+
+**Done when:** clicking Resume opens the deck on the same card you left, and Previous/Next carry on from there.
+
+---
+
+### Resume stretch goals
+
+- A "Start over" text button next to Resume that calls `resetDeck()`.
+- Show the last two or three decks, not just one.
+- Put the deck position in the URL (`/study/angular?card=5`), so a link can share a position. Compare that with `localStorage`: which survives what?
+
+---
+
+## Definition of done (all features)
 
 - [ ] Routes are lazy-loaded and linked from the menu.
 - [ ] Pure logic lives in `utils/` and has tests. `npm test` is green.
@@ -277,3 +346,4 @@ Tick these off as you go:
 - [ ] Discriminated unions in TypeScript
 - [ ] Timer cleanup with `DestroyRef` (or RxJS `toSignal`)
 - [ ] Why `innerHTML` and `eval` are dangerous
+- [ ] Persisting service state to `localStorage` (and what can't be serialised directly)

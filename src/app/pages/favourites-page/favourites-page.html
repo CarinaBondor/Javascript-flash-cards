@@ -1,25 +1,28 @@
-<mat-card appearance="outlined" class="card">
-  <mat-card-header>
-    <mat-card-title>Favourited cards</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    @if (favouritedCards().length === 0) {
-      <p>You have no favourited cards.</p>
-    } @else {
-      <p>Total favourites: {{ favouritedCards().length }}</p>
-    }
-  </mat-card-content>
-</mat-card>
+<div class="narrow-page">
+  <header class="page-heading">
+    <h1>Favourites</h1>
+    <p aria-live="polite">
+      @if (favouritedCards().length) {
+        {{ favouritedCards().length }}
+        {{ favouritedCards().length === 1 ? "card" : "cards" }} saved for a quick review.
+      } @else {
+        Cards you save will show up here.
+      }
+    </p>
+  </header>
 
-<section class="search-results" aria-live="polite">
-  @if (favouritedCards().length > 0) {
-    @for (card of favouritedCards(); track card.id) {
-      <app-flash-card
-        [cardId]="card.id"
-        [question]="card.question"
-        [answer]="card.answer"
-        class="skinny"
-      />
-    }
+  @if (favouritedCards().length) {
+    <ul class="card-list">
+      @for (card of favouritedCards(); track card.id) {
+        <li><app-card-row [card]="card" /></li>
+      }
+    </ul>
+  } @else {
+    <div class="empty">
+      <mat-icon aria-hidden="true">favorite</mat-icon>
+      <h2>No favourites yet</h2>
+      <p>Tap the heart on any card to keep it here for a quick review before an interview.</p>
+      <a matButton="filled" routerLink="/study">Start studying</a>
+    </div>
   }
-</section>
+</div>

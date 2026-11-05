@@ -1,46 +1,43 @@
-@if (card(); as currentCard) {
-  <article class="card-detail-page">
-    <button type="button" matButton="tonal" (click)="goBack()" class="back-link">
-      <mat-icon>arrow_back</mat-icon> Back
-    </button>
+<article class="narrow-page detail">
+  <button type="button" matButton class="back" (click)="goBack()">
+    <mat-icon aria-hidden="true">arrow_back</mat-icon>
+    Back
+  </button>
 
-    <mat-card appearance="outlined" class="article-card">
-      <mat-card-header>
-        <div class="article-heading">
-          <span class="category">{{ currentCard.category }}</span>
-          <mat-card-title>
-            <h1>{{ currentCard.question }}</h1></mat-card-title
-          >
-        </div>
-        <app-favourite-button [cardId]="currentCard.id" />
-      </mat-card-header>
+  @if (card(); as currentCard) {
+    <div [attr.data-topic]="topic()">
+      <div class="detail-meta">
+        <span class="topic-chip">{{ topicLabel() }}</span>
+        <span class="level">{{ currentCard.level | titlecase }}</span>
+        <app-favourite-button class="favourite" [cardId]="currentCard.id" />
+      </div>
 
-      <mat-card-content>
-        <p class="article-label">Answer</p>
-        <p class="article-answer">{{ currentCard.answer }}</p>
-      </mat-card-content>
+      <h1>{{ currentCard.question }}</h1>
+
+      <p class="answer-block">{{ currentCard.answer }}</p>
 
       @if (currentCard.editorial) {
-        <mat-card-content class="editorial-content">
-          <p class="article-label">Editorial</p>
-          <p class="article-editorial">{{ currentCard.editorial }}</p>
-        </mat-card-content>
+        <p class="editorial">{{ currentCard.editorial }}</p>
       }
-    </mat-card>
-  </article>
-} @else {
-  <article class="card-detail-page">
-    <mat-card appearance="outlined" class="article-card">
-      <mat-card-header class="article-heading">
-        <mat-card-title>Sorry, your flash card was not found</mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="editorial-content">
-        <p class="article-editorial">That flash card does not exist.</p>
-        <button type="button" matButton="tonal" (click)="goBack()">
-          <mat-icon>arrow_back</mat-icon>
-          Return to flash cards
-        </button>
-      </mat-card-content>
-    </mat-card>
-  </article>
-}
+
+      <div class="detail-actions">
+        <a matButton="tonal" [routerLink]="studyPath()">
+          <mat-icon aria-hidden="true">school</mat-icon>
+          Study the {{ topicLabel() }} deck
+        </a>
+      </div>
+    </div>
+  } @else {
+    <h1>This card doesn't exist</h1>
+    <p class="editorial">
+      The link may be out of date. Search for the topic instead, or go back to the decks.
+    </p>
+    <div class="detail-actions">
+      <a matButton="filled" routerLink="/search">
+        <mat-icon aria-hidden="true">search</mat-icon>
+        Search cards
+      </a>
+      <a matButton routerLink="/decks">Browse the decks</a>
+    </div>
+  }
+</article>

@@ -8,6 +8,14 @@ import { FavouritesService } from "../../services/favourites.service";
   standalone: true,
   imports: [MatIconModule, MatButtonModule],
   templateUrl: "./appFavouriteButton.html",
+  styles: `
+    .favourite-button {
+      color: var(--mat-sys-on-surface-variant);
+    }
+    .favourite-button.is-favourite {
+      color: var(--topic-angular);
+    }
+  `,
 })
 export class FavouriteButton {
   readonly cardId = input.required<number>();

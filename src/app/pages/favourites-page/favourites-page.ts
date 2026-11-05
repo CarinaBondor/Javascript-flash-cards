@@ -1,14 +1,17 @@
-import { Component, computed, inject } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, inject } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { RouterLink } from "@angular/router";
+import { CardRow } from "../../components/appCardRow/appCardRow.component";
 import { CardsService } from "../../services/cards.service";
 import { FavouritesService } from "../../services/favourites.service";
-import { MatCardModule } from "@angular/material/card";
-import { FlashCard } from "../../components/appFlashCard/appFlashCard.component";
 
 @Component({
   selector: "app-favourites-page",
-  imports: [MatCardModule, FlashCard],
+  imports: [MatButtonModule, MatIconModule, RouterLink, CardRow],
   templateUrl: "./favourites-page.html",
   styleUrl: "./favourites-page.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FavouritesPage {
   private readonly cardsService = inject(CardsService);

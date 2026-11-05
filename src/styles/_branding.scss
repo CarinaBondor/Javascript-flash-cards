@@ -3,13 +3,14 @@
 // =============================================================================
 // Theme & Branding Tokens
 // =============================================================================
-$color-primary: #007bff;
-$color-primary-hover: #0056b3;
-$color-text: #333333;
-$color-background: #ffffff;
-$color-border: #dddddd;
+// Colours live in CSS custom properties (see styles.scss and _topics.scss), so they can follow
+// light and dark mode. Prefer var(--mat-sys-*) and var(--topic-*) in component styles.
+$font-family: "Recursive", system-ui, sans-serif;
 
-$border-radius: 12px;
+$shape-sm: 8px;
+$shape-md: 12px;
+$shape-lg: 16px;
+$shape-full: 999px;
 
 $spacing-sm: 10px;
 $spacing-md: 20px;
@@ -98,21 +99,4 @@ $container-padding-desktop: 2rem;
     padding-left: $container-padding-desktop;
     padding-right: $container-padding-desktop;
   }
-}
-
-// =============================================================================
-// Utility classes for template use
-// =============================================================================
-.site-container {
-  @include site-container();
-  padding-top: 80px;
-  padding-bottom: 80px;
-}
-
-.site-container-content {
-  @include site-container($site-content-width);
-}
-
-.site-container-narrow {
-  @include site-container($site-narrow-width);
 }
